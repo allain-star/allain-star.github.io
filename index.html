@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="css/1-index.css">
+		<link rel="stylesheet" type="text/css" href="css/main.css">
+		<title>Login</title>
+	</head>
+	<body>
+		<main>
+			<header><i id="logo"><img src="CSS/images/link.png"></i><label>CONNECT</label></header>
+			<form action="src/indexClass.php" method="POST">
+				<input type="text" placeholder="Username" name="Username" required>
+				<input type="password" placeholder="Password" name="Password" required>
+				<p style="margin-left: 10px; color: red;"><?php if(isset($_GET['message'])) echo $_GET['message']; ?></p><br><br>
+				<input type="submit" value="LOGIN" id="button">
+			</form>	
+		</main>
+	</body>
+</html>

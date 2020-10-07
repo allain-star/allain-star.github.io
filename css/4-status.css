@@ -1,0 +1,9 @@
+main{
+	padding: 15px;
+}
+.Buttons{
+	border: 2px solid whitesmoke;
+	padding: 15px;
+	background-color: white;
+	cursor: pointer;
+}
