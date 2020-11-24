@@ -2,9 +2,10 @@
     <head>
       <link rel="stylesheet" type="text/css" href="../css/programs.css">
       <link rel="stylesheet" type="text/css" href="../css/layout.css">
+      <script type="text/javascript" src="../js/responsiveness.js"></script>
     </head>
     <body>
-    <header><a href="../index.html">Programs ></a> <strong>Master of Arts in Education</strong> <span style="float: right;"><a href="#" style="color:rgb(150, 150, 247);"><span style="font-size: 22px; color: rgb(150, 150, 247); font-weight: bold;">&plus;</span> Insert Course</span></a></header>
+    <header><a href="../index.html">Programs ></a> <strong>Master of Arts in Education</strong> <span style="float: right;"><button style="color:rgb(150, 150, 247); background: none; cursor: pointer; border: none; padding: 8px; font-size: 14px;" onclick="openModal()"><span style="font-size: 14px; color: rgb(150, 150, 247); font-weight: bold;">&plus;</span> Insert Course</span></a></header>
       <main>
         <table>
           <tr>
@@ -34,13 +35,15 @@
         </table>
       </main>
       
-      <div id="insertCourse" class="insertCourseModal">
+      <div id="courseModal" class="insertCourseModal">
+        <span style="float: right;"></spab><button onclick="closeModal()" style="background: none; font-size: 20px; cursor: pointer;border: none;">&times;</button></span>
         <form method="POST" action="#">
           <input type="text" placeholder="Course Code"> 
           <input type="text" placeholder="Course Title"><br> 
           <textarea rows="4" cols="50" style="width: 93%; text-align: left;">Course Description</textarea><br>
-          <input type="text" placeholder="Course Code"> 
-        </form>
+          <input type="text" placeholder="Units"> 
+          <br><input type="submit" value="Submit">
+          </form>
       </div>
       
     </body>
