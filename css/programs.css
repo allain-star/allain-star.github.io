@@ -1,0 +1,36 @@
+main{
+  background-color: #ffffff;
+}
+header{
+  background-color: #ffffff;
+  font-size: 18px;
+}
+table{
+  border-collapse: collapse;
+  width: 100%;
+}
+table tr th{
+  text-align: left;
+}
+table tr th, td{
+  padding: 8px;
+  font-size: 14px;
+}
+table tr:nth-child(even){background-color: #f2f2f2;}
+
+
+
+.insertCourseModal{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #ffffff;
+  padding: 15px;
+}
+.insertCourseModal input, textarea{
+  outline: none;
+  border: 1px solid black;
+  margin: 5px;
+  padding: 8px;
+}
