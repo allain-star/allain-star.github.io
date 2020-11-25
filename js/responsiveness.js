@@ -32,15 +32,15 @@ function openNav(id){
 } 
 
 
-function openModal(){
+function openModal(id){
  
-  document.getElementById("courseModal").style.display = "block";
+  document.getElementById(Modal).style.display = "block";
   
 }
 
-function closeModal(){
+function closeModal(id){
   
-  document.getElementById("courseModal").style.display = "none";
+  document.getElementById(id).style.display = "none";
   
   
 }

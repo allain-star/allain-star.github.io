@@ -10,7 +10,7 @@
       
     </head>
     <body>
-    <header style="border-bottom: 1px solid whitesmoke;"><a href="../index.html">Programs ></a> <strong>Master of Arts in Education</strong> <span style="float: right;"><button class="majorButtons" onclick="openModal()"><span style="font-size: 14px; color:white;">Add Course</span></a></header>
+    <header style="border-bottom: 1px solid whitesmoke;"><a href="../index.html">Programs ></a> <strong>Master of Arts in Education</strong> <span style="float: right;"><button class="majorButtons" onclick="openModal('courseModal')"><span style="font-size: 14px; color:white;">Add Course</span></a></header>
       <main>
         <table id="dataTable">
           <tr>
@@ -25,13 +25,20 @@
       </main>
       
       <div id="courseModal" class="insertCourseModal">
-        <span style="float: right;"></spab><button onclick="closeModal()" style="background: none; font-size: 20px; cursor: pointer;border: none;">&times;</button></span>
+        <span style="float: right;"></spab><button onclick="closeModal('courseModal')" style="background: none; font-size: 20px; cursor: pointer;border: none;">&times;</button></span>
           <br><br><input type="text" placeholder="Course Code" id="courseCode"> 
           <input type="text" placeholder="Course Title" id="courseTitle"><br> 
           <textarea rows="4" cols="50" style="width: 93%; text-align: left;" id="courseDescription">Course Description</textarea><br>
           <input type="text" placeholder="Units" id="numberUnits"> 
           <br><button class="majorButtons" id="submit" style="width: 100%; padding: 8px;">Submit</button>
         </div>
+        
+        <div id="actionModal" class="insertCourseModal">
+          <span style="float: right;"></spab><button onclick="closeModal()" style="background: none; font-size: 20px; cursor: pointer;border: none;">&times;</button></span>
+            <button>Update</button>
+            <button>Remove</button>
+          </div>
+        
         
         <script>
           
@@ -50,31 +57,33 @@
           
           const submitBtn = document.getElementById('submit');
             
-          firebase.database().ref("Programs/MAT").on('value', function (snapshot){
+          firebase.database().ref("MAT").on('value', function (snapshot){
             
-            var content = '';
-            var _code = snapshot.val().code;
-            var _title = snapshot.val().title;
-            var _description = snapshot.val().description;
-            var _unit = snapshot.val().unit;
-            
-            content += "<tr><td>"+_code+"</td><td>"+_title+"</td><td>"+_description+"</td><td></td><td></td><td>"+_unit+"</td></tr>";
-            document.getElementById('dataTable').innerHTML += content;
-            
+            snapshot.forEach(element => {
+           
+              var content = '';
+              var _code = element.val().code;
+              var _title = element.val().title;
+              var _description = element.val().description;
+              var _unit = element.val().unit;
+              
+              content += "<tr><td><button style='background: none; border: none; cursor: pointer;'>"+_code+"</button></td><td>"+_title+"</td><td style='text-align: center;'>none</td><td style='text-align: center;'>none</td><td>"+_description+"</td><td style='text-align: center;'>"+_unit+"</td></tr>";
+              document.getElementById('dataTable').innerHTML += content;
+           
+            });
+                 
           });
-            
-                    
-                    
+                  
           submitBtn.addEventListener('click', function(){
-            
-            var programCode = "MAT";        
+            location.reload();
+            var programCode = "MAT500";        
             var Code = document.getElementById('courseCode').value;
             var Title = document.getElementById('courseTitle').value;
             var Description = document.getElementById('courseDescription').value;
             var NumberUnits = document.getElementById('numberUnits').value;    
           
             console.log(Code);
-            firebase.database().ref("Programs/"+programCode).set({
+            firebase.database().ref("MAT/"+Code).set({
               
                 code: Code,
                 title: Title,
@@ -86,6 +95,7 @@
             
             
             document.getElementById('courseModal').style.display = "none";
+            
             
           });
           
