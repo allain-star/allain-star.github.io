@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+    <head>
+      <link rel="stylesheet" type="text/css" href="../css/programs.css">
+      <link rel="stylesheet" type="text/css" href="../css/layout.css">
+      <script type="text/javascript" src="../js/responsiveness.js"></script>
+      <!-- FIREBASE CONNECTION -->
+      <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-database.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-analytics.js"></script>
+      
+    </head>
+    <body>
+    <header style="border-bottom: 1px solid whitesmoke;"><a href="../index.html">Programs ></a> <strong>Master of Arts in Education</strong> <span style="float: right;"><button class="majorButtons" onclick="openModal()"><span style="font-size: 14px; color:white;">Add Course</span></a></header>
+      <main>
+        <table id="dataTable">
+          <tr>
+            <th>Course Code</th>
+            <th>Course Title</th>
+            <th style="text-align: center;">Pre-requisite</th>
+            <th style="text-align: center;">Co-requisite</th>
+            <th width="700px">Course Description</th>
+            <th style="text-align: center;">Units</th>
+          </tr>
+          </table>
+      </main>
+      
+      <div id="courseModal" class="insertCourseModal">
+        <span style="float: right;"></spab><button onclick="closeModal()" style="background: none; font-size: 20px; cursor: pointer;border: none;">&times;</button></span>
+          <br><br><input type="text" placeholder="Course Code" id="courseCode"> 
+          <input type="text" placeholder="Course Title" id="courseTitle"><br> 
+          <textarea rows="4" cols="50" style="width: 93%; text-align: left;" id="courseDescription">Course Description</textarea><br>
+          <input type="text" placeholder="Units" id="numberUnits"> 
+          <br><button class="majorButtons" id="submit" style="width: 100%; padding: 8px;">Submit</button>
+        </div>
+        
+        <script>
+          
+          var firebaseConfig = {
+            apiKey: "AIzaSyDGD1OvJtu3Z0sWCvGz_MW8I8xbNRjxq84",
+            authDomain: "weconnectmoto.firebaseapp.com",
+            databaseURL: "https://weconnectmoto.firebaseio.com",
+            projectId: "weconnectmoto",
+            storageBucket: "weconnectmoto.appspot.com",
+            messagingSenderId: "785399505200",
+            appId: "1:785399505200:web:af31d23588f6ebeaaae8f5",
+            measurementId: "G-RGXEL9WZ0P"
+          };
+          // Initialize Firebase
+          firebase.initializeApp(firebaseConfig);
+          
+          const submitBtn = document.getElementById('submit');
+            
+          firebase.database().ref("Programs/MAT").on('value', function (snapshot){
+            
+            var content = '';
+            var _code = snapshot.val().code;
+            var _title = snapshot.val().title;
+            var _description = snapshot.val().description;
+            var _unit = snapshot.val().unit;
+            
+            content += "<tr><td>"+_code+"</td><td>"+_title+"</td><td>"+_description+"</td><td></td><td></td><td>"+_unit+"</td></tr>";
+            document.getElementById('dataTable').innerHTML += content;
+            
+          });
+            
+                    
+                    
+          submitBtn.addEventListener('click', function(){
+            
+            var programCode = "MAT";        
+            var Code = document.getElementById('courseCode').value;
+            var Title = document.getElementById('courseTitle').value;
+            var Description = document.getElementById('courseDescription').value;
+            var NumberUnits = document.getElementById('numberUnits').value;    
+          
+            console.log(Code);
+            firebase.database().ref("Programs/"+programCode).set({
+              
+                code: Code,
+                title: Title,
+                description: Description,
+                unit: NumberUnits
+              
+            });
+            
+            
+            
+            document.getElementById('courseModal').style.display = "none";
+            
+          });
+          
+        </script>
+      
+    </body>
+</html>
