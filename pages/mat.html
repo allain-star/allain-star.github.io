@@ -12,19 +12,24 @@
       
     </head>
     <body>
-    <header style="border-bottom: 1px solid whitesmoke;"><a href="../index.html">Programs ></a> <strong>Master of Arts in Education</strong> <span style="float: right;"><button class="majorButtons" onclick="openModal('courseModal')"><span style="font-size: 14px; color:white;">Add Course</span></a></header>
-      <main>
-        <table id="dataTable">
-          <tr>
-            <th style="font-size: 1vw;">Course Code</th>
-            <th style="font-size: 1vw;">Course Title</th>
-            <th style="text-align: center; font-size: 1vw;">Pre-requisite</th>
-            <th style="text-align: center; font-size: 1vw;">Co-requisite</th>
-            <th width="45%" style="font-size: 1vw;">Course Description</th>
-            <th style="text-align: center; font-size: 1vw;">Units</th>
-            <th></th>
-          </tr>
+    <header style="border-bottom: 1px solid whitesmoke; font-size: 2.5vh;"><a href="../index.html">Programs ></a> <strong>Master of Arts in Education</strong> <span style="float: right;"><button class="majorButtons" onclick="openModal('courseModal')"><span style="font-size: 14px; color:white;">Add Course</span></a></header>
+      <main style="font-size: 2.5 vh;">
+        <div style="overflow-x: auto;">
+          <table style="padding: 8px; width: 100%;">
+            <tr style="padding: 5px;">
+              <th style="font-size: 2vh;">Course Code</th>
+              <th style="font-size: 2vh;">Course Title</th>
+              <th style="text-align: center; font-size: 2vh;">Pre-requisite</th>
+              <th style="text-align: center; font-size: 2vh;">Co-requisite</th>
+              <th width="45%" style="font-size: 2vh;">Course Description</th>
+              <th style="text-align: center; font-size: 2vh;">Units</th>
+              <th></th>
+            </tr>
+            <tbody id="dataTable" style="padding: 15px;">
+            
+            </tbody>
           </table>
+        </div>
       </main>
       
       <div id="courseModal" class="insertCourseModal">
@@ -75,9 +80,9 @@
               var pdf = element.val().pdf;
               
               if( i%2 == 0)
-                content += '<tr style="font-size: 1.5vw; background-color: #f2f2f2;"><td><button onclick="openPdf('+refCode+')" style="background: none; border: none; cursor: pointer; text-align: left; outline: none;">'+_code+'</button></td><td style="">'+_title+'</td><td style="text-align: center;">none</td><td style="text-align: center;">none</td><td style="">'+_description+'</td><td style="text-align: center; ">'+_unit+'</td><td><button style="outine: none; border: none; cursor: pointer;background: none;" onclick="deleteData('+refCode+')">Remove</button></td></tr>';
+                content += '<tr style="background-color: #f2f2f2; padding: 8px;"><td><button onclick="openPdf('+refCode+')" style="background: none; border: none; cursor: pointer; text-align: left; outline: none;">'+_code+'</button></td><td style="">'+_title+'</td><td style="text-align: center;">none</td><td style="text-align: center;">none</td><td style="">'+_description+'</td><td style="text-align: center; ">'+_unit+'</td><td><button style="outine: none; border: none; cursor: pointer;background: none;" onclick="deleteData('+refCode+')">Remove</button></td></tr>';
               else
-                content += "<tr><td><button onclick='openPdf("+refCode+")' style='background: none; border: none; cursor: pointer; text-align: left; outline: none;'>"+_code+"</button></td><td>"+_title+"</td><td style='text-align: center; '>none</td><td style='text-align: center;'>none</td><td style=''>"+_description+"</td><td style='text-align: center; '>"+_unit+"</td><td><button style='background: none; outline: none; border: none;cursor: pointer;' onclick='deleteData("+refCode+")'>Remove</button></td></tr>"; 
+                content += "<tr style='padding: 8px; background: none; padding: 8px;'><td><button onclick='openPdf("+refCode+")' style='background: none; border: none; cursor: pointer; text-align: left; outline: none;'>"+_code+"</button></td><td>"+_title+"</td><td style='text-align: center; '>none</td><td style='text-align: center;'>none</td><td style=''>"+_description+"</td><td style='text-align: center; '>"+_unit+"</td><td><button style='background: none; outline: none; border: none;cursor: pointer;' onclick='deleteData("+refCode+")'>Remove</button></td></tr>"; 
               document.getElementById('dataTable').innerHTML += content;
               i++;
             });
@@ -96,7 +101,7 @@
                   
           const submitBtn = document.getElementById('submit');        
           submitBtn.addEventListener('click', function(){
-            
+            location.reload();
             //COURSE CONTENT
             var id = document.getElementById('numCode').value;        
             var Code = document.getElementById('courseCode').value;
@@ -146,13 +151,14 @@
                       file: filename
                 });
                     
+                location.reload();
                 
               });
               
             });
             
             
-            
+            location.reload();
            
           });
             

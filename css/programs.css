@@ -3,7 +3,7 @@ main{
 }
 header{
   background-color: #ffffff;
-  font-size: 18px;
+  font-size: 20px;
 }
 table{
   border-collapse: collapse;
@@ -11,6 +11,7 @@ table{
 }
 table tr th{
   text-align: left;
+  padding: 5px;
 }
 table tr th, td{
   padding: 0px;
@@ -53,8 +54,5 @@ table tr:nth-child(even){background-color: #f2f2f2;}
   header{
     background-color: #ffffff;
     font-size: 1.8vh;
-  }
-  .majorButtons{
-    font-size: 1vh;
   }
 }
