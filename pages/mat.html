@@ -31,7 +31,7 @@
           <textarea rows="4" cols="50" style="width: 93%; text-align: left;" id="courseDescription" placeholder="Course Desciption"></textarea><br>
           <input type="text" placeholder="Units" id="numberUnits"> 
           <br><button class="majorButtons" id="submit" style="width: 49%; padding: 8px;">Submit</button>
-          <button style="width: 49%; padding: 8px; border: none;" onclick="closeModal('courseModal')">Cancel</button>
+          <button style="width: 49%; padding: 8px; border: none;" onclick="closeModal('courseModal')" id="closeButton">Cancel</button>
         </div>
         
         <div id="actionModal" class="insertCourseModal">
@@ -56,7 +56,7 @@
           // Initialize Firebase
           firebase.initializeApp(firebaseConfig);
           
-          const submitBtn = document.getElementById('submit');
+         
             
           firebase.database().ref("MAT").on('value', function (snapshot){
             
@@ -68,13 +68,15 @@
               var _description = element.val().description;
               var _unit = element.val().unit;
               
-              content += "<tr><td><button style='background: none; border: none; cursor: pointer; font-size: 1vw; text-align: left;'>"+_code+"</button></td><td style='font-size: 1vw;'>"+_title+"</td><td style='text-align: center;font-size: 1vw;'>none</td><td style='text-align: center;font-size: 1vw;'>none</td><td style='font-size: 1vw;'>"+_description+"</td><td style='text-align: center; font-size: 1vw;'>"+_unit+"</td></tr>";
+              content += "<tr style='nth-child(even){background-color: #f2f2f2;}'><td><button  onclick='openModal('actionModal')' style='background: none; border: none; cursor: pointer; font-size: 1vw; text-align: left; outline: none;'>"+_code+"</button></td><td style='font-size: 1vw;'>"+_title+"</td><td style='text-align: center;font-size: 1vw;'>none</td><td style='text-align: center;font-size: 1vw;'>none</td><td style='font-size: 1vw;'>"+_description+"</td><td style='text-align: center; font-size: 1vw;'>"+_unit+"</td></tr>";
               document.getElementById('dataTable').innerHTML += content;
            
             });
                  
           });
                   
+                  
+          const submitBtn = document.getElementById('submit');        
           submitBtn.addEventListener('click', function(){
             location.reload();
             var programCode = "MAT500";        
