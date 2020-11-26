@@ -5,6 +5,8 @@
       <link rel="stylesheet" type="text/css" href="../css/programs.css">
       <link rel="stylesheet" type="text/css" href="../css/layout.css">
       <script type="text/javascript" src="../js/responsiveness.js"></script>
+      <link rel="preconnect" href="https://fonts.gstatic.com">
+      <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400&display=swap" rel="stylesheet">
 <style>
 table {
   border-collapse: collapse;
@@ -28,10 +30,10 @@ tr:nth-child(even){background-color: #f2f2f2}
 </head>
 
 <body onload="loadData()">
-  <header style="border-bottom: 1px solid whitesmoke; font-size: 2.5vh;"><a href="../index.html">Programs ></a> <strong>Master of Arts in Education</strong> <span style="float: right;"><button class="majorButtons" onclick="openModal('courseModal')"><span style="font-size: 14px; color:white;">Add Course</span></a></header>
+  <header style="border-bottom: 1px solid whitesmoke; font-size: 2.5vh; padding: 20px; font-family: 'Source Sans Pro', sans-serif;"><a href="../index.html">Programs |</a> Master of Arts in Education <span style="float: right;"><button style="outline: none; background: none; border: none;" onclick="openModal('courseModal')"><span style="font-size: 14px; color:white; outline: none;"><img src='../css/icons/add.png' height="15px" style="cursor: pointer; outline: none;"></span></a></header>
   <main>
-    <div style="overflow-x:auto;">
-      <table>
+    <div style="overflow-x:auto; font-family: 'Source Sans Pro', sans-serif;">
+      <table style=" font-size: 12px;">
         <tr style="text-align: left;">
           <th style="padding: 12px;">Course Code</th>
           <th>Title</th>
@@ -50,8 +52,8 @@ tr:nth-child(even){background-color: #f2f2f2}
   
   <div id="courseModal" class="insertCourseModal">
     <input type="text" id="numCode" hidden>
-    <br><input type="text" placeholder="Course Code" id="courseCode" required> 
-    <input type="text" placeholder="Course Title" id="courseTitle" required><br> 
+    <br><input type="text" placeholder="Course Code" id="courseCode" style="width: 20%;" required> 
+    <input type="text" placeholder="Course Title" id="courseTitle" style="width: 67%;" required><br> 
     <textarea rows="4" cols="50" style="width: 93%; text-align: left;" id="courseDescription" placeholder="Course Desciption" required></textarea><br>
     <input type="text" placeholder="Units" id="numberUnits" required> 
     <input type="file" style="border: none;" id="fileUploader" required>
@@ -90,9 +92,9 @@ tr:nth-child(even){background-color: #f2f2f2}
         var pdf = element.val().pdf;
         
         if( i%2 == 0)
-          content += '<tr style="background-color: #f2f2f2; padding: 8px; text-align: left;"><td><button onclick="openPdf('+refCode+')" style="background: none; border: none; cursor: pointer; text-align: left; outline: none;">'+_code+'</button></td><td style="">'+_title+'</td><td style="text-align: center;">none</td><td style="text-align: center;">none</td><td style="">'+_description+'</td><td style="text-align: center; ">'+_unit+'</td><td><button style="outine: none; border: none; cursor: pointer;background: none;" onclick="deleteData('+refCode+')">Remove</button></td></tr>';
+          content += '<tr style="background-color: #f2f2f2; padding: 8px; text-align: left;"><td><button onclick="openPdf('+refCode+')" style="background: none; border: none; cursor: pointer; text-align: left; font-family: "Source Sans Pro", sans-serif; outline: none;">'+_code+'</button></td><td style="font-family: "Source Sans Pro", sans-serif;">'+_title+'</td><td style="text-align: center; font-family: "Source Sans Pro", sans-serif;">none</td><td style="text-align: center; font-family: "Source Sans Pro", sans-serif;">none</td><td style="font-family: "Source Sans Pro", sans-serif;">'+_description+'</td><td style="text-align: center; font-family: "Source Sans Pro", sans-serif;">'+_unit+'</td><td><button style="outine: none; border: none; cursor: pointer;background: none; font-family: "Source Sans Pro", sans-serif;" onclick="deleteData('+refCode+')"><img src="../css/icons/remove.png" height="19px"></button></td></tr>';
         else
-          content += "<tr style='padding: 8px; background: none; padding: 8px;'><td><button onclick='openPdf("+refCode+")' style='background: none; border: none; cursor: pointer; text-align: left; outline: none;'>"+_code+"</button></td><td>"+_title+"</td><td style='text-align: center; '>none</td><td style='text-align: center;'>none</td><td style=''>"+_description+"</td><td style='text-align: center; '>"+_unit+"</td><td><button style='background: none; outline: none; border: none;cursor: pointer;' onclick='deleteData("+refCode+")'>Remove</button></td></tr>"; 
+          content += "<tr style='padding: 8px; background: none; padding: 8px;'><td><button onclick='openPdf("+refCode+")' style='background: none; border: none; cursor: pointer; text-align: left; outline: none; font-family: 'Source Sans Pro', sans-serif;'>"+_code+"</button></td><td>"+_title+"</td><td style='text-align: center; '>none</td><td style='text-align: center;'>none</td><td style=''>"+_description+"</td><td style='text-align: center; '>"+_unit+"</td><td style='width: 20px; text-align: center;'><button style='background: none; outline: none; border: none;cursor: pointer;' onclick='deleteData("+refCode+")'><img src='../css/icons/remove.png' height='19px'></button></td></tr>"; 
         document.getElementById('dataTable').innerHTML += content;
         i++;
       });

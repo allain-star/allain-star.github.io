@@ -1,5 +1,6 @@
 main{
 	margin-left: 12%;
+	font-family: "Source Sans Pro", sans-serif;
 }
 nav header{
 	font-weight: bold;
@@ -15,6 +16,7 @@ nav button{
 	outline: none;
 	opacity: 0.6;
 	color: white;
+	font-family: "Source Sans Pro", sans-serif;
 }
 nav button:hover{
 	opacity: 0.9;
@@ -38,6 +40,7 @@ main .active header{
 main .active{
 	background-color: #ffffff;
 	display: block;
+	font-size: medium;
 }
 main .content{
 	padding: 0px;
