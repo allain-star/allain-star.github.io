@@ -1,5 +1,6 @@
 <!DOCTYPE html>
     <head>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <link rel="stylesheet" type="text/css" href="../css/programs.css">
       <link rel="stylesheet" type="text/css" href="../css/layout.css">
       <script type="text/javascript" src="../js/responsiveness.js"></script>
@@ -18,23 +19,23 @@
             <th>Course Title</th>
             <th style="text-align: center;">Pre-requisite</th>
             <th style="text-align: center;">Co-requisite</th>
-            <th width="700px">Course Description</th>
+            <th width="45%">Course Description</th>
             <th style="text-align: center;">Units</th>
           </tr>
           </table>
       </main>
       
       <div id="courseModal" class="insertCourseModal">
-        <span style="float: right;"></spab><button onclick="closeModal('courseModal')" style="background: none; font-size: 20px; cursor: pointer;border: none;">&times;</button></span>
-          <br><br><input type="text" placeholder="Course Code" id="courseCode"> 
+          <br><input type="text" placeholder="Course Code" id="courseCode"> 
           <input type="text" placeholder="Course Title" id="courseTitle"><br> 
-          <textarea rows="4" cols="50" style="width: 93%; text-align: left;" id="courseDescription">Course Description</textarea><br>
+          <textarea rows="4" cols="50" style="width: 93%; text-align: left;" id="courseDescription" placeholder="Course Desciption"></textarea><br>
           <input type="text" placeholder="Units" id="numberUnits"> 
-          <br><button class="majorButtons" id="submit" style="width: 100%; padding: 8px;">Submit</button>
+          <br><button class="majorButtons" id="submit" style="width: 49%; padding: 8px;">Submit</button>
+          <button style="width: 49%; padding: 8px; border: none;" onclick="closeModal('courseModal')">Cancel</button>
         </div>
         
         <div id="actionModal" class="insertCourseModal">
-          <span style="float: right;"></spab><button onclick="closeModal()" style="background: none; font-size: 20px; cursor: pointer;border: none;">&times;</button></span>
+          <span style="float: right;"></spab><button onclick="closeModal()" style="background: none; font-size: 1.5vw; cursor: pointer;border: none;">&times;</button></span>
             <button>Update</button>
             <button>Remove</button>
           </div>
@@ -67,7 +68,7 @@
               var _description = element.val().description;
               var _unit = element.val().unit;
               
-              content += "<tr><td><button style='background: none; border: none; cursor: pointer;'>"+_code+"</button></td><td>"+_title+"</td><td style='text-align: center;'>none</td><td style='text-align: center;'>none</td><td>"+_description+"</td><td style='text-align: center;'>"+_unit+"</td></tr>";
+              content += "<tr><td><button style='background: none; border: none; cursor: pointer; font-size: 1vw; text-align: left;'>"+_code+"</button></td><td style='font-size: 1vw;'>"+_title+"</td><td style='text-align: center;font-size: 1vw;'>none</td><td style='text-align: center;font-size: 1vw;'>none</td><td style='font-size: 1vw;'>"+_description+"</td><td style='text-align: center; font-size: 1vw;'>"+_unit+"</td></tr>";
               document.getElementById('dataTable').innerHTML += content;
            
             });

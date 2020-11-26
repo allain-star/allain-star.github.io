@@ -1,5 +1,6 @@
 <html>
 <head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>CMS</title>
 	<link rel="stylesheet" type="text/css" href="css/Style.css">
 	<link rel="stylesheet" type="text/css" href="css/layout.css">
@@ -8,7 +9,6 @@
 </head>
 <body>
 	<nav>
-		<header>Prototype</header>
 		<button class="active" data-tab-target="#dashboard" onclick="openNav(this)">Dashboard</button>
 		<button data-tab-target="#courses" onclick="openNav(this)">Programs</button>
 		<button data-tab-target="#departments">Departments</button>
@@ -23,7 +23,7 @@
 				<header>Programs</header>
 				<div class="main-content">
 			
-					<a href="pages/mat.html"><div class="items">
+					<a href="pages/mat.html" onclick="sendingProgramId('MAT')"><div class="items">
 						<span><span style="float: right;">[MAT]</span> Master of Arts in Education</span>
 					</div></a>
 					<a href="#"><div class="items">

@@ -33,14 +33,13 @@ function openNav(id){
 
 
 function openModal(id){
- 
-  document.getElementById(Modal).style.display = "block";
-  
+  document.getElementById(id).style.display = "block";
 }
 
 function closeModal(id){
-  
   document.getElementById(id).style.display = "none";
-  
+}
+
+function sendingProgramId(courseId){
   
 }

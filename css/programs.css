@@ -35,6 +35,8 @@ table tr:nth-child(even){background-color: #f2f2f2;}
   border: 1px solid black;
   margin: 5px;
   padding: 8px;
+  border: none;
+  border-bottom: 1px solid rgb(133, 133, 196);
 }
 
 /* BUTTONS */
@@ -46,4 +48,15 @@ table tr:nth-child(even){background-color: #f2f2f2;}
   outline: none; 
   border-radius: 3px; 
   cursor: pointer;
+}
+
+
+@media screen and (max-width: 1000px) {
+  header{
+    background-color: #ffffff;
+    font-size: 1.8vh;
+  }
+  .majorButtons{
+    font-size: 1vh;
+  }
 }
