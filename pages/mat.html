@@ -84,7 +84,7 @@
                   
           const submitBtn = document.getElementById('submit');        
           submitBtn.addEventListener('click', function(){
-            location.reload();
+           
             var id = document.getElementById('numCode').value;        
             var Code = document.getElementById('courseCode').value;
             var Title = document.getElementById('courseTitle').value;
@@ -103,7 +103,7 @@
             
             
             document.getElementById('courseModal').style.display = "none";
-            
+            location.reload();
             
           });
             
