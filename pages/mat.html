@@ -29,11 +29,11 @@
       
       <div id="courseModal" class="insertCourseModal">
           <input type="text" id="numCode" hidden>
-          <br><input type="text" placeholder="Course Code" id="courseCode"> 
-          <input type="text" placeholder="Course Title" id="courseTitle"><br> 
-          <textarea rows="4" cols="50" style="width: 93%; text-align: left;" id="courseDescription" placeholder="Course Desciption"></textarea><br>
-          <input type="text" placeholder="Units" id="numberUnits"> 
-          <input type="file" style="border: none;" id="fileUploader">
+          <br><input type="text" placeholder="Course Code" id="courseCode" required> 
+          <input type="text" placeholder="Course Title" id="courseTitle" required><br> 
+          <textarea rows="4" cols="50" style="width: 93%; text-align: left;" id="courseDescription" placeholder="Course Desciption" required></textarea><br>
+          <input type="text" placeholder="Units" id="numberUnits" required> 
+          <input type="file" style="border: none;" id="fileUploader" required>
           <br><button class="majorButtons" id="submit" style="width: 49%; padding: 8px;">Submit</button>
           <button style="width: 49%; padding: 8px; border: none;" onclick="closeModal('courseModal')" id="closeButton">Cancel</button>
         </div>
