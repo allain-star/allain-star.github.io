@@ -21,11 +21,13 @@
             <th style="text-align: center;">Co-requisite</th>
             <th width="45%">Course Description</th>
             <th style="text-align: center;">Units</th>
+            <th></th>
           </tr>
           </table>
       </main>
       
       <div id="courseModal" class="insertCourseModal">
+          <input type="text" id="numCode" hidden>
           <br><input type="text" placeholder="Course Code" id="courseCode"> 
           <input type="text" placeholder="Course Title" id="courseTitle"><br> 
           <textarea rows="4" cols="50" style="width: 93%; text-align: left;" id="courseDescription" placeholder="Course Desciption"></textarea><br>
@@ -34,7 +36,7 @@
           <button style="width: 49%; padding: 8px; border: none;" onclick="closeModal('courseModal')" id="closeButton">Cancel</button>
         </div>
         
-        <div id="actionModal" class="insertCourseModal">
+        <div id="1" class="insertCourseModal">
           <span style="float: right;"></spab><button onclick="closeModal()" style="background: none; font-size: 1.5vw; cursor: pointer;border: none;">&times;</button></span>
             <button>Update</button>
             <button>Remove</button>
@@ -57,7 +59,7 @@
           firebase.initializeApp(firebaseConfig);
           
          
-            
+          var i = 0;
           firebase.database().ref("MAT").on('value', function (snapshot){
             
             snapshot.forEach(element => {
@@ -67,10 +69,14 @@
               var _title = element.val().title;
               var _description = element.val().description;
               var _unit = element.val().unit;
+              var refCode = element.val().id;
               
-              content += "<tr style='nth-child(even){background-color: #f2f2f2;}'><td><button  onclick='openModal('actionModal')' style='background: none; border: none; cursor: pointer; font-size: 1vw; text-align: left; outline: none;'>"+_code+"</button></td><td style='font-size: 1vw;'>"+_title+"</td><td style='text-align: center;font-size: 1vw;'>none</td><td style='text-align: center;font-size: 1vw;'>none</td><td style='font-size: 1vw;'>"+_description+"</td><td style='text-align: center; font-size: 1vw;'>"+_unit+"</td></tr>";
+              if( i%2 == 0)
+                content += '<tr style="background-color: #f2f2f2;"><td><button style="background: none; border: none; cursor: pointer; font-size: 1vw; text-align: left; outline: none;">'+_code+'</button></td><td style="font-size: 1vw;">'+_title+'</td><td style="text-align: center;font-size: 1vw;">none</td><td style="text-align: center;font-size: 1vw;">none</td><td style="font-size: 1vw;">'+_description+'</td><td style="text-align: center; font-size: 1vw;">'+_unit+'</td><td><button style="outine: none; border: none; cursor: pointer;background: none;" onclick="deleteData('+refCode+')">Remove</button></td></tr>';
+              else
+                content += "<tr><td><button style='background: none; border: none; cursor: pointer; font-size: 1vw; text-align: left; outline: none;'>"+_code+"</button></td><td style='font-size: 1vw;'>"+_title+"</td><td style='text-align: center;font-size: 1vw;'>none</td><td style='text-align: center;font-size: 1vw;'>none</td><td style='font-size: 1vw;'>"+_description+"</td><td style='text-align: center; font-size: 1vw;'>"+_unit+"</td><td><button style='background: none; outline: none; border: none;cursor: pointer;' onclick='deleteData("+refCode+")'>Remove</button></td></tr>"; 
               document.getElementById('dataTable').innerHTML += content;
-           
+              i++;
             });
                  
           });
@@ -79,20 +85,19 @@
           const submitBtn = document.getElementById('submit');        
           submitBtn.addEventListener('click', function(){
             location.reload();
-            var programCode = "MAT500";        
+            var id = document.getElementById('numCode').value;        
             var Code = document.getElementById('courseCode').value;
             var Title = document.getElementById('courseTitle').value;
             var Description = document.getElementById('courseDescription').value;
             var NumberUnits = document.getElementById('numberUnits').value;    
           
             console.log(Code);
-            firebase.database().ref("MAT/"+Code).set({
-              
+            firebase.database().ref("MAT/"+id).set({
+                id: id,
                 code: Code,
                 title: Title,
                 description: Description,
                 unit: NumberUnits
-              
             });
             
             
@@ -101,7 +106,19 @@
             
             
           });
+            
+        
+          function deleteData(idd){
+            
+              firebase.database().ref("MAT/"+idd).remove();  
+              location.reload();  
+                  
+          }
+            
+            
+            
           
+            
         </script>
       
     </body>

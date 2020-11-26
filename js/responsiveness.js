@@ -1,3 +1,5 @@
+
+
 function openNav(id){
   
   const tabs = document.querySelectorAll('[data-tab-target]');
@@ -34,6 +36,7 @@ function openNav(id){
 
 function openModal(id){
   document.getElementById(id).style.display = "block";
+  document.getElementById("numCode").value = Math.floor(Math.random()*10000);
 }
 
 function closeModal(id){
