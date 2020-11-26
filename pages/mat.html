@@ -7,6 +7,7 @@
       <!-- FIREBASE CONNECTION -->
       <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
       <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-database.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-storage.js"></script>
       <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-analytics.js"></script>
       
     </head>
@@ -32,6 +33,7 @@
           <input type="text" placeholder="Course Title" id="courseTitle"><br> 
           <textarea rows="4" cols="50" style="width: 93%; text-align: left;" id="courseDescription" placeholder="Course Desciption"></textarea><br>
           <input type="text" placeholder="Units" id="numberUnits"> 
+          <input type="file" style="border: none;" id="fileUploader">
           <br><button class="majorButtons" id="submit" style="width: 49%; padding: 8px;">Submit</button>
           <button style="width: 49%; padding: 8px; border: none;" onclick="closeModal('courseModal')" id="closeButton">Cancel</button>
         </div>
@@ -70,49 +72,130 @@
               var _description = element.val().description;
               var _unit = element.val().unit;
               var refCode = element.val().id;
+              var pdf = element.val().pdf;
               
               if( i%2 == 0)
-                content += '<tr style="background-color: #f2f2f2;"><td><button style="background: none; border: none; cursor: pointer; font-size: 1vw; text-align: left; outline: none;">'+_code+'</button></td><td style="font-size: 1vw;">'+_title+'</td><td style="text-align: center;font-size: 1vw;">none</td><td style="text-align: center;font-size: 1vw;">none</td><td style="font-size: 1vw;">'+_description+'</td><td style="text-align: center; font-size: 1vw;">'+_unit+'</td><td><button style="outine: none; border: none; cursor: pointer;background: none;" onclick="deleteData('+refCode+')">Remove</button></td></tr>';
+                content += '<tr style="background-color: #f2f2f2;"><td><button onclick="openPdf('+refCode+')" style="background: none; border: none; cursor: pointer; font-size: 1vw; text-align: left; outline: none;">'+_code+'</button></td><td style="font-size: 1vw;">'+_title+'</td><td style="text-align: center;font-size: 1vw;">none</td><td style="text-align: center;font-size: 1vw;">none</td><td style="font-size: 1vw;">'+_description+'</td><td style="text-align: center; font-size: 1vw;">'+_unit+'</td><td><button style="outine: none; border: none; cursor: pointer;background: none;" onclick="deleteData('+refCode+')">Remove</button></td></tr>';
               else
-                content += "<tr><td><button style='background: none; border: none; cursor: pointer; font-size: 1vw; text-align: left; outline: none;'>"+_code+"</button></td><td style='font-size: 1vw;'>"+_title+"</td><td style='text-align: center;font-size: 1vw;'>none</td><td style='text-align: center;font-size: 1vw;'>none</td><td style='font-size: 1vw;'>"+_description+"</td><td style='text-align: center; font-size: 1vw;'>"+_unit+"</td><td><button style='background: none; outline: none; border: none;cursor: pointer;' onclick='deleteData("+refCode+")'>Remove</button></td></tr>"; 
+                content += "<tr><td><button onclick='openPdf("+refCode+")' style='background: none; border: none; cursor: pointer; font-size: 1vw; text-align: left; outline: none;'>"+_code+"</button></td><td style='font-size: 1vw;'>"+_title+"</td><td style='text-align: center;font-size: 1vw;'>none</td><td style='text-align: center;font-size: 1vw;'>none</td><td style='font-size: 1vw;'>"+_description+"</td><td style='text-align: center; font-size: 1vw;'>"+_unit+"</td><td><button style='background: none; outline: none; border: none;cursor: pointer;' onclick='deleteData("+refCode+")'>Remove</button></td></tr>"; 
               document.getElementById('dataTable').innerHTML += content;
               i++;
             });
                  
           });
-                  
+                
+          var selectedFile;
+          const file = document.getElementById('fileUploader');
+          file.addEventListener('change', function(e){
+            selectedFile = event.target.files[0];
+            var storageRef = firebase.storage().ref('/files/');
+            console.log(selectedFile);
+            
+          });
+         
                   
           const submitBtn = document.getElementById('submit');        
           submitBtn.addEventListener('click', function(){
-           
+            
+            //COURSE CONTENT
             var id = document.getElementById('numCode').value;        
             var Code = document.getElementById('courseCode').value;
             var Title = document.getElementById('courseTitle').value;
             var Description = document.getElementById('courseDescription').value;
             var NumberUnits = document.getElementById('numberUnits').value;    
-          
-            console.log(Code);
-            firebase.database().ref("MAT/"+id).set({
-                id: id,
-                code: Code,
-                title: Title,
-                description: Description,
-                unit: NumberUnits
+  
+            //FILE UPLOAD
+            var filename = selectedFile.name;
+            var storageRef = firebase.storage().ref(+id+'/'+filename);
+            var uploadTask = storageRef.put(selectedFile);
+            
+            uploadTask.on('state_changed', function(snapshot){
+            // Observe state change events such as progress, pause, and resume
+            // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
+            var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+              console.log('Upload is ' + progress + '% done');
+              switch (snapshot.state) {
+                case firebase.storage.TaskState.PAUSED: // or 'paused'
+                  console.log('Upload is paused');
+                  break;
+                case firebase.storage.TaskState.RUNNING: // or 'running'
+                  console.log('Upload is running');
+                  break;
+              }
+              
+              if(progress == 100){
+                alert("Upload Complete");
+                document.getElementById('courseModal').style.display = "none";
+               
+              }
+            }, function(error) {
+              // Handle unsuccessful uploads
+            }, function() {
+              // Handle successful uploads on complete
+              // For instance, get the download URL: https://firebasestorage.googleapis.com/...
+              uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
+                console.log('File available at', downloadURL);
+                //UPLOAD THE ACTUAL CONTENT
+                firebase.database().ref("MAT/"+id).set({
+                      id: id,
+                      code: Code,
+                      title: Title,
+                      description: Description,
+                      unit: NumberUnits,
+                      pdf: downloadURL,
+                      file: filename
+                });
+                    
+                
+              });
+              
             });
             
             
             
-            document.getElementById('courseModal').style.display = "none";
-            location.reload();
-            
+           
           });
             
         
           function deleteData(idd){
             
-              firebase.database().ref("MAT/"+idd).remove();  
-              location.reload();  
+            var storageRef = firebase.storage().ref();
+
+            // Points to 'images'
+            
+            
+            firebase.database().ref("MAT/"+idd).on('value', function (snapshot){
+              
+              console.log(idd+'/'+snapshot.val().file);
+              fileId = snapshot.val().file;
+            });
+            
+              firebase.database().ref("MAT/"+idd).remove();;
+              var spaceRef = storageRef.child(idd+'/'+fileId);
+
+              spaceRef.delete().then(function() {
+                  alert('Row Successfully Removed!');
+                  location.reload();  
+              }).catch(function(error) {
+
+              });
+              
+             
                   
+          }
+          
+          function openPdf(id){
+            
+            
+            console.log(id);
+            
+            
+            firebase.database().ref("MAT/"+id).on('value', function (snapshot){
+              
+              window.open(snapshot.val().pdf);
+              
+            });
+            
           }
             
             
