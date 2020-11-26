@@ -13,7 +13,7 @@ table tr th{
   text-align: left;
 }
 table tr th, td{
-  padding: 8px;
+  padding: 0px;
   font-size: 14px;
 }
 table tr:nth-child(even){background-color: #f2f2f2;}

@@ -16,12 +16,12 @@
       <main>
         <table id="dataTable">
           <tr>
-            <th>Course Code</th>
-            <th>Course Title</th>
-            <th style="text-align: center;">Pre-requisite</th>
-            <th style="text-align: center;">Co-requisite</th>
-            <th width="45%">Course Description</th>
-            <th style="text-align: center;">Units</th>
+            <th style="font-size: 1vw;">Course Code</th>
+            <th style="font-size: 1vw;">Course Title</th>
+            <th style="text-align: center; font-size: 1vw;">Pre-requisite</th>
+            <th style="text-align: center; font-size: 1vw;">Co-requisite</th>
+            <th width="45%" style="font-size: 1vw;">Course Description</th>
+            <th style="text-align: center; font-size: 1vw;">Units</th>
             <th></th>
           </tr>
           </table>
@@ -75,9 +75,9 @@
               var pdf = element.val().pdf;
               
               if( i%2 == 0)
-                content += '<tr style="background-color: #f2f2f2;"><td><button onclick="openPdf('+refCode+')" style="background: none; border: none; cursor: pointer; font-size: 1vw; text-align: left; outline: none;">'+_code+'</button></td><td style="font-size: 1vw;">'+_title+'</td><td style="text-align: center;font-size: 1vw;">none</td><td style="text-align: center;font-size: 1vw;">none</td><td style="font-size: 1vw;">'+_description+'</td><td style="text-align: center; font-size: 1vw;">'+_unit+'</td><td><button style="outine: none; border: none; cursor: pointer;background: none;" onclick="deleteData('+refCode+')">Remove</button></td></tr>';
+                content += '<tr style="font-size: 1.5vw; background-color: #f2f2f2;"><td><button onclick="openPdf('+refCode+')" style="background: none; border: none; cursor: pointer; text-align: left; outline: none;">'+_code+'</button></td><td style="">'+_title+'</td><td style="text-align: center;">none</td><td style="text-align: center;">none</td><td style="">'+_description+'</td><td style="text-align: center; ">'+_unit+'</td><td><button style="outine: none; border: none; cursor: pointer;background: none;" onclick="deleteData('+refCode+')">Remove</button></td></tr>';
               else
-                content += "<tr><td><button onclick='openPdf("+refCode+")' style='background: none; border: none; cursor: pointer; font-size: 1vw; text-align: left; outline: none;'>"+_code+"</button></td><td style='font-size: 1vw;'>"+_title+"</td><td style='text-align: center;font-size: 1vw;'>none</td><td style='text-align: center;font-size: 1vw;'>none</td><td style='font-size: 1vw;'>"+_description+"</td><td style='text-align: center; font-size: 1vw;'>"+_unit+"</td><td><button style='background: none; outline: none; border: none;cursor: pointer;' onclick='deleteData("+refCode+")'>Remove</button></td></tr>"; 
+                content += "<tr><td><button onclick='openPdf("+refCode+")' style='background: none; border: none; cursor: pointer; text-align: left; outline: none;'>"+_code+"</button></td><td>"+_title+"</td><td style='text-align: center; '>none</td><td style='text-align: center;'>none</td><td style=''>"+_description+"</td><td style='text-align: center; '>"+_unit+"</td><td><button style='background: none; outline: none; border: none;cursor: pointer;' onclick='deleteData("+refCode+")'>Remove</button></td></tr>"; 
               document.getElementById('dataTable').innerHTML += content;
               i++;
             });
