@@ -12,10 +12,13 @@
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
   
+  var programId = document.getElementById('programId').value;
+  console.log(programId);
+  
   function loadData(){
     
     var i = 0;
-    firebase.database().ref("MAT").on('value', function (snapshot){
+    firebase.database().ref(programId).on('value', function (snapshot){
       
       snapshot.forEach(element => {
     
@@ -91,7 +94,7 @@
               uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
                 console.log('File available at', downloadURL);
                 //UPLOAD THE ACTUAL CONTENT
-                firebase.database().ref("MAT/"+id).set({
+                firebase.database().ref(programId+"/"+id).set({
                       id: id,
                       code: Code,
                       title: Title,
@@ -121,13 +124,13 @@
 
             // Points to 'images'
             
-            firebase.database().ref("MAT/"+idd).on('value', function (snapshot){
+            firebase.database().ref(programId+"/"+idd).on('value', function (snapshot){
               
               console.log(idd+'/'+snapshot.val().file);
               fileId = snapshot.val().file;
             });
             
-              firebase.database().ref("MAT/"+idd).remove();;
+              firebase.database().ref(programId+"/"+idd).remove();;
               var spaceRef = storageRef.child(idd+'/'+fileId);
 
               spaceRef.delete().then(function() {
@@ -147,7 +150,7 @@
             console.log(id);
             
             
-            firebase.database().ref("MAT/"+id).on('value', function (snapshot){
+            firebase.database().ref(programId+"/"+id).on('value', function (snapshot){
               
               window.open(snapshot.val().pdf);
               
