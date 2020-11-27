@@ -188,6 +188,7 @@ tr:nth-child(even){background-color: #f2f2f2}
               
               console.log(idd+'/'+snapshot.val().file);
               fileId = snapshot.val().file;
+              
             });
             
               firebase.database().ref("deiem/"+idd).remove();;
