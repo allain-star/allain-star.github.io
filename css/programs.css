@@ -12,6 +12,7 @@ table{
 table tr th{
   text-align: left;
   padding: 5px;
+  border-bottom: 1px solid whitesmoke;
 }
 table tr th, td{
   padding: 0px;
@@ -82,3 +83,12 @@ table .tableItemsAlter{
    background: none; 
    padding: 8px;
  }
+.courseIntro{
+  border-bottom: 1px solid whitesmoke;
+  font-family: 'Montserrat', sans-serif;
+  padding: 5px;
+  margin: 0px;
+  font-size: small;
+  letter-spacing: 0.5px;
+  line-height: 18px;
+}
