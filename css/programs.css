@@ -58,3 +58,27 @@ table tr:nth-child(even){background-color: #f2f2f2;}
     font-size: 1.8vh;
   }
 }
+
+
+/*TABLE*/
+table #CC{
+  padding: 12px; 
+  width: 10%;
+  text-align: left;
+}
+table #description{
+  width: 50%;
+}
+table #unit{
+  text-align: center;
+}
+table .tableItemss{
+  background-color: #f2f2f2; 
+  padding: 8px; 
+  text-align: left;
+ }
+table .tableItemsAlter{
+   padding: 8px; 
+   background: none; 
+   padding: 8px;
+ }
