@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 
   <head>
+    <link rel="icon" href="css/icons/code.svg">
     <link rel="stylesheet" type="text/css" href="css/index.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="preconnect" href="https://fonts.gstatic.com"><link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap" rel="stylesheet">  
@@ -43,7 +44,7 @@
             if(element.val().username == userName){
               sessionStorage.setItem("uid", userName);
               this.close();
-              window.open("pages/home.html");
+              location.replace("pages/home.html");
             }else{
               responseTab.innerHTML = "Invalid";
             }
