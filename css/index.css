@@ -115,3 +115,11 @@ table .action img, button{
   margin-bottom: 8px;
   color: red;
 }
+.loginForm header{
+  margin: 0px;
+  margin-left: -20px;
+  margin-top: -20px;
+  font-weight: bold;
+  font-family: 'Montserrat', sans-serif;
+  font-size: large;
+}

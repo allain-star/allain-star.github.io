@@ -9,7 +9,9 @@ header{
 	padding: 15px;
 }
 main{
-	padding: 15px;
+	padding: 0px;
+	margin-right: 0px; 
+	overflow-x: hidden;
 }
 nav{
 	float: left;

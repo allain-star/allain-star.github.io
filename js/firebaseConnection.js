@@ -48,13 +48,14 @@
           file.addEventListener('change', function(e){
             selectedFile = event.target.files[0];
             var storageRef = firebase.storage().ref('/files/');
-            console.log(selectedFile);
-            
+            console.log(selectedFile);           
           });
   
+  const uploadStatus = document.getElementById("uploadingStatus");
+  const upload = document.getElementById("uploadPercentage");
   const submitBtn = document.getElementById('submit');        
           submitBtn.addEventListener('click', function(){
-            
+            uploadStatus.style.display = "block";
             //COURSE CONTENT
             var id = document.getElementById('numCode').value;        
             var Code = document.getElementById('courseCode').value;
@@ -71,7 +72,9 @@
             // Observe state change events such as progress, pause, and resume
             // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
             var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-              console.log('Upload is ' + progress + '% done');
+             // console.log('Upload is ' + progress + '% done');
+             // upload.innerHTML = Math.floor(progress)+" %";
+              
               switch (snapshot.state) {
                 case firebase.storage.TaskState.PAUSED: // or 'paused'
                   console.log('Upload is paused');
@@ -82,9 +85,9 @@
               }
               
               if(progress == 100){
-                alert("Upload Complete");
+              //  upload.innerHTML = "Upload Complete";
                 document.getElementById('courseModal').style.display = "none";
-               
+                
               }
             }, function(error) {
               // Handle unsuccessful uploads

@@ -10,6 +10,7 @@
   </head>
   <body>
     <main class="loginForm">
+      <header>LOGIN</header>
       <input type="text" placeholder="USERNAME" id="username"><br>
       <div class="serverResponse" id="response"></div>
       <button id="loginBtn">LOGIN</button>
@@ -39,7 +40,6 @@
         firebase.database().ref('USERS').on('value', function(snapshot){
           
           snapshot.forEach(element => {
-            console.log(element.val().username);
             if(element.val().username == userName){
               window.open("pages/home.html");
               this.close();

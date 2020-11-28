@@ -9,8 +9,6 @@ function openNav(id){
   
       tab.addEventListener('click', () =>{
         const targetTab = document.querySelector(tab.dataset.tabTarget); 
-        
-        //DISPOSING 'active' CLASS NAME
         content.forEach(contentTab => {
           contentTab.classList.remove('active');
         });
@@ -19,12 +17,10 @@ function openNav(id){
         });
         tab.classList.add('active');
         
-        //LOOP FOR PUTTING CONTENT TO CLASS NAME OF TABS
         content.forEach(contentTab => {
           contentTab.classList.add('content');
         });
         
-        //THE TARGET CONTENT
         targetTab.classList.remove('content');
         targetTab .classList.add('active');
       });
