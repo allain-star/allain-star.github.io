@@ -69,7 +69,9 @@ tr:nth-child(even){background-color: #f2f2f2}
     <br><button class="majorButtons" id="submit" style="width: 49%; padding: 8px;">Submit</button>
     <button style="width: 49%; padding: 8px; border: none;" onclick="closeModal('courseModal')" id="closeButton">Cancel</button>
   </div>
-  
+  <div id="uploadingStatus">
+    Uploading File. . .<span id="uploadPercentage"> </span>
+  </div>
   <input type="text" id="programId" value="deiem" hidden>
   <script src="../js/firebaseConnection.js"></script>
 

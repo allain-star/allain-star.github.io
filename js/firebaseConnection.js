@@ -65,7 +65,7 @@
   
             //FILE UPLOAD
             var filename = selectedFile.name;
-            var storageRef = firebase.storage().ref(+id+'/'+filename);
+            var storageRef = firebase.storage().ref(filename);
             var uploadTask = storageRef.put(selectedFile);
             
             uploadTask.on('state_changed', function(snapshot){
@@ -73,7 +73,6 @@
             // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
             var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
              // console.log('Upload is ' + progress + '% done');
-             // upload.innerHTML = Math.floor(progress)+" %";
               
               switch (snapshot.state) {
                 case firebase.storage.TaskState.PAUSED: // or 'paused'
@@ -81,11 +80,12 @@
                   break;
                 case firebase.storage.TaskState.RUNNING: // or 'running'
                   console.log('Upload is running');
+                  upload.innerHTML = Math.floor(progress)+" %";
                   break;
               }
               
               if(progress == 100){
-              //  upload.innerHTML = "Upload Complete";
+                upload.innerHTML = "Upload Complete";
                 document.getElementById('courseModal').style.display = "none";
                 
               }
@@ -108,7 +108,6 @@
                 });
                 
                 location.reload();    
-                loadData();
                 
               });
               
@@ -121,20 +120,16 @@
             
         
           function deleteData(idd){
-            var storageRef = firebase.storage().ref();
+            
             firebase.database().ref(programId+"/"+idd).on('value', function (snapshot){
-              console.log(idd+'/'+snapshot.val().file);
               fileId = snapshot.val().file;
             });
+            firebase.storage().ref(fileId).delete();
             
-              firebase.database().ref(programId+"/"+idd).remove();;
-              var spaceRef = storageRef.child(idd+'/'+fileId);
-
-              spaceRef.delete().then(function() {
-              }).catch(function(error) {
-              });
+              firebase.database().ref(programId+"/"+idd).remove();;    
               alert('Remove row');
               location.reload();    
+          
           }
           
           function openPdf(id){
