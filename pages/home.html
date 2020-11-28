@@ -14,7 +14,7 @@
 		<button class="active" data-tab-target="#dashboard" onclick="openNav(this)">Dashboard</button>
 		<button data-tab-target="#courses" onclick="openNav(this)">Programs</button>
 		<button data-tab-target="#departments">Departments</button>
-		<button id="logoutBtn">Logout</button>
+		<button id="logoutBtn" onclick="logout()">Logout</button>
 	</nav>
 	<body>
 		<main>
@@ -52,12 +52,10 @@
 		</main>
 	</body>
 	<script>
-	
-		const logoutBtn = document.getElementById("logoutBtn");
-		logoutBtn.addEventListener('click', function(){			
+		function logout(){
 			  this.close();
 			  window.open("../index.html");
-		});
+		}
 
 	</script>
 </body>
