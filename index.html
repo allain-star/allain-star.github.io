@@ -1,65 +1,59 @@
-<html>
-<head>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>CMS</title>
-	<link rel="stylesheet" type="text/css" href="css/Style.css">
-	<link rel="stylesheet" type="text/css" href="css/layout.css">
-	<script type="text/javascript" src="js/script.js"></script>
-	<script type="text/javascript" src="js/responsiveness.js"></script>
-	<link rel="preconnect" href="https://fonts.gstatic.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com"><link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap" rel="stylesheet">
-</head>
-<body>
-	<nav>
-		<button class="active" data-tab-target="#dashboard" onclick="openNav(this)">Dashboard</button>
-		<button data-tab-target="#courses" onclick="openNav(this)">Programs</button>
-		<button data-tab-target="#departments">Departments</button>
-	</nav>
-	<body>
-		<main>
-			<div class="active" id="dashboard" data-tab-content>
-				<header>Dashboard</header>
-				<div class="main-content">UNDERCONSTRUCTION</div>
-			</div>
-			<div class="content" id="courses" data-tab-content>
-				<header>Programs</header>
-				<div class="main-content">
-					<a href="pages/deiem.html" onclick="sendingProgramId('MAT')"><div class="items">
-						<span>Doctor of Education in Industrial Education Management</span>
-					</div></a>
-					<a href="pages/MATPROGRAM.html" onclick="sendingProgramId('MAT')"><div class="items">
-						<span>Masters of Arts in Industiral Education</span>
-					</div></a>
-					
-				</div>
-			</div>
-			<div class="content" id="departments" data-tab-content>
-				<header>Departments</header>
-				
-				<div class="main-content">
-			
-					<a href="#"><div class="items">
-						<span>[MAT] Master of Arts in Education</span>
-					</div></a>
-					<a href="#"><div class="items">
-						<span>MAT Master of Arts in Education</span>
-					</div></a>
-					
-				</div>
-			
-			</div>
-		</main>
-	</body>
-</body>
+<!DOCTYPE html>
 
-<!-- The core Firebase JS SDK is always required and must be listed first -->
-<script src="/__/firebase/8.1.1/firebase-app.js"></script>
+  <head>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com"><link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap" rel="stylesheet">  
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-database.js"></script>
+   
+  </head>
+  <body>
+    <main class="loginForm">
+      <input type="text" placeholder="USERNAME" id="username"><br>
+      <input type="password" placeholder="PASSWORD" id="password"><br>
+      <div class="serverResponse" id="response"></div>
+      <button id="loginBtn">LOGIN</button>
+    </main>
+    
+    <script>
+    
+    var firebaseConfig = {
+      apiKey: "AIzaSyDGD1OvJtu3Z0sWCvGz_MW8I8xbNRjxq84",
+      authDomain: "weconnectmoto.firebaseapp.com",
+      databaseURL: "https://weconnectmoto.firebaseio.com",
+      projectId: "weconnectmoto",
+      storageBucket: "weconnectmoto.appspot.com",
+      messagingSenderId: "785399505200",
+      appId: "1:785399505200:web:af31d23588f6ebeaaae8f5",
+      measurementId: "G-RGXEL9WZ0P"
+    };
 
-<!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#available-libraries -->
-<script src="/__/firebase/8.1.1/firebase-analytics.js"></script>
+    firebase.initializeApp(firebaseConfig);
 
-<!-- Initialize Firebase -->
-<script src="/__/firebase/init.js"></script>
+    const loginbutton = document.getElementById("loginBtn");
+    const responseTab = document.getElementById("response");
+    
+    loginbutton.addEventListener('click', function(){
+        var userName = document.getElementById("username").value;
+        var password = document.getElementById("password").value;
+        var response = "";
+        firebase.database().ref('USERS').on('value', function(snapshot){
+          
+          snapshot.forEach(element => {
+            console.log(element.val().username);
+            if(element.val().username == userName){
+              window.open("index.html");
+            }else{
+              responseTab.innerHTML = "Invalid";
+            }
+          });
+                    
+        });
+    });
+    
+    </script>
+    
+  </body>
 
-</html> 
+</html>
