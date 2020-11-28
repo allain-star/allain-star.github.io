@@ -107,7 +107,6 @@
                 location.reload();    
                 loadData();
                 
-                
               });
               
             });
@@ -119,13 +118,8 @@
             
         
           function deleteData(idd){
-            
             var storageRef = firebase.storage().ref();
-
-            // Points to 'images'
-            
             firebase.database().ref(programId+"/"+idd).on('value', function (snapshot){
-              
               console.log(idd+'/'+snapshot.val().file);
               fileId = snapshot.val().file;
             });
@@ -134,26 +128,15 @@
               var spaceRef = storageRef.child(idd+'/'+fileId);
 
               spaceRef.delete().then(function() {
-                
-                   
               }).catch(function(error) {
-
               });
               alert('Remove row');
-              location.reload(); 
-                  
+              location.reload();    
           }
           
           function openPdf(id){
-            
-            
-            console.log(id);
-            
-            
             firebase.database().ref(programId+"/"+id).on('value', function (snapshot){
-              
               window.open(snapshot.val().pdf);
-              
             });
             
           }

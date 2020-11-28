@@ -42,6 +42,7 @@
             console.log(element.val().username);
             if(element.val().username == userName){
               window.open("pages/home.html");
+              this.close();
             }else{
               responseTab.innerHTML = "Invalid";
             }
