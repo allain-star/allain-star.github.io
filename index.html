@@ -41,8 +41,8 @@
           
           snapshot.forEach(element => {
             if(element.val().username == userName){
-              window.open("pages/home.html");
               this.close();
+              window.open("pages/home.html");
             }else{
               responseTab.innerHTML = "Invalid";
             }
