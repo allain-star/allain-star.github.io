@@ -12,10 +12,12 @@
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
   
+  var allowAccess = " ";
   var programId = document.getElementById('programId').value;
-  console.log(programId);
+  validateUser(sessionStorage.getItem("uid"));
   
-  if(sessionStorage.getItem("uid") == null){
+  
+  if(allowAccess == "denied"){
      console.log("Login first!");
   }else{
     
@@ -128,4 +130,14 @@
   function logout(){
     this.close();
     window.open("../index.html");
+  }
+  
+  function validateUser(user){
+    firebase.database().ref("USERS/"+user).on( 'value', function (snapshot){
+      if(snapshot.val().username == user)
+        allowAccess = "allow";
+      else
+        allowAccess = "denied";
+      
+    });
   }
