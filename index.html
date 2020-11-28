@@ -35,7 +35,6 @@
     
     loginbutton.addEventListener('click', function(){
         var userName = document.getElementById("username").value;
-        var password = document.getElementById("password").value;
         var response = "";
         firebase.database().ref('USERS').on('value', function(snapshot){
           
