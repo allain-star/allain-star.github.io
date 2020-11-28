@@ -128,8 +128,7 @@
   }
   
   function logout(){
-    this.close();
-    window.open("../index.html");
+    location.replace("../index.html");
   }
   
   function validateUser(user){
