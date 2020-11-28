@@ -8,6 +8,7 @@ header{
 table{
   border-collapse: collapse;
   width: 100%;
+  padding: 15px;
 }
 table tr th{
   text-align: left;
