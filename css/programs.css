@@ -46,7 +46,7 @@ table tr:nth-child(even){background-color: #f2f2f2;}
 .majorButtons{
   color: white;
   border: none; 
-  padding: 6px; 
+  padding: 15px; 
   background-color: rgb(133, 133, 196); 
   outline: none; 
   border-radius: 3px; 
