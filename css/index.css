@@ -2,6 +2,7 @@ body{
   margin: 0px;
   background-color: #f2f2f2;
   font-family: 'Montserrat', sans-serif;
+  box-sizing: border-box;
 }
 header{
   padding: 20px;
@@ -77,49 +78,54 @@ table .action img, button{
 }
 
 
-
-
 .loginForm{
-  font-family: 'Montserrat', sans-serif;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  padding: 30px;
-  width: 25%;
+  padding: 20px;
   box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
   border-radius: 4px;
-}
-.loginForm button{
-  width: 100%;
-  background-color: rgb(150, 150, 247);
-  padding: 15px;
-  border-radius: 4px;
-  font-family: 'Montserrat', sans-serif;
-  color: white;
-  font-weight: bold;
-} 
-.loginForm input{
-  font-weight: bold;
-  font-family: 'Montserrat', sans-serif;
-  border: none;
-  padding: 15px;
-  background-color: #f2f2f2;
-  width: 91%;
-  margin: 0px;
-  border-radius: 4px;
-  margin-bottom: 8px;
-}
-.loginForm .serverResponse{
-  padding: 8px;
-  margin-bottom: 8px;
-  color: red;
+  width: 20%;
 }
 .loginForm header{
-  margin: 0px;
-  margin-left: -20px;
-  margin-top: -20px;
-  font-weight: bold;
-  font-family: 'Montserrat', sans-serif;
-  font-size: large;
+  font-size: x-large;
+  padding: 0px;
+}
+.loginForm img{
+  height: 30px;
+}
+.loginForm label{
+  position: absolute;
+  margin-top: 2px;
+  margin-left: 5px;
+}
+.loginForm input{
+  width: 89.5%;
+  font-size: medium;
+  padding: 10px;
+  border: none;
+  background: #f2f2f2;
+  margin-top: 15px;
+  border-bottom: 15px;
+}
+.loginForm button{
+  font-size: medium;
+  margin-top: 15px;
+  width: 100%;
+  padding: 10px;
+  background-color: rgb(150, 150, 247);
+  color: white;
+  border-radius: 4px;
+}
+
+@media screen and (max-width: 600px) { 
+  .loginForm{
+    min-width: 70%;
+  }
+}
+@media screen and (max-width: 600px){
+  .loginForm{
+    min-width: 50%;
+  }
 }
