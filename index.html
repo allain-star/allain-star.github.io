@@ -43,8 +43,7 @@
           snapshot.forEach(element => {
             if(element.val().username == userName){
               sessionStorage.setItem("uid", userName);
-              this.close();
-              location.replace("pages/home.html");
+               location.replace("pages/home.html");
             }else{
               responseTab.innerHTML = "Invalid";
             }
