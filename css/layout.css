@@ -10,7 +10,7 @@ header{
 }
 main{
 	padding: 0px;
-	margin-right: 0px; 
+	margin-right: 0px;
 	overflow-x: hidden;
 }
 nav{
@@ -25,17 +25,20 @@ a{
 	color: black;
 	outline: none;
 }
+
+@media screen and (min-width: 700px) {
+	main .active .spacer{
+		display: none;
+	}
+}
 @media screen and (max-width: 700px) {
 	nav{
 		width: 100%;
 		height: auto;
-		display: inline;
-		position: relative;
 	}
 	nav button{
 		display: inline;
 		width: auto;
-		float: right;
 	}
 	nav button:hover{
 		opacity: 0.9;
@@ -55,14 +58,21 @@ a{
 	main .active{
 		background-color: #ffffff;
 		display: block;
-		margin-top: 12%;
-		position: relative;
 	}	
 	main .active header{
 		background-color: none;
 		font-weight: bold;
 		cursor: default;
 		font-size: 2.5vh;
+		display: none;
+	}
+	main .active .spacer{
+		background-color: none;
+		font-weight: bold;
+		cursor: default;
+		display: block;
+		padding-top: 55px;
+		color: white;
 	}
 	main .active .main-content .items{
 		padding: 8px;
