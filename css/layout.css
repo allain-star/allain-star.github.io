@@ -52,6 +52,9 @@ a{
 		border-bottom: 3px solid rgb(150, 150, 247);
 		border-left: none;
 	}
+	nav #firstButton{
+		margin-left: 25%;
+	}
 	main{
 		margin-left: 0%;
 	}

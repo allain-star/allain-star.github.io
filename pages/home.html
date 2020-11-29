@@ -12,15 +12,14 @@
 </head>
 <body>
 	<nav>
-		<button class="schoolBanner"><img src="../css/icons/logo.png" height="45px"><span>CIE</span></button>
-		<button class="active" data-tab-target="#courses" onclick="openNav(this)">Programs</button>
+		<button class="active" id="firstButton" data-tab-target="#courses" onclick="openNav(this)">Programs</button>
 		<button data-tab-target="#departments" onclick="openNav(this)">Departments</button>
 		<button id="logoutBtn" onclick="logout()">Logout</button>
 	</nav>
 	<body>
 		<main>
 			<div class="active" id="courses" data-tab-content>
-				<header>Programs</header>
+				<header>CIE | Programs</header>
 				<div class="main-content">
 					<div class="spacer">.</div>
 					<a href="deiem.html" onclick="sendingProgramId('MAT')"><div class="items">

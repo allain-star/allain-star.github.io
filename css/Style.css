@@ -6,20 +6,6 @@ nav header{
 	font-weight: bold;
 	text-align: center;
 }
-nav .schoolBanner{
-	opacity: 1;
-}
-nav .schoolBanner:hover{
-	border: none;
-	opacity: 1;
-}
-nav .schoolBanner span{
-	padding: 12px;
-	position: absolute;
-	font-size: large;
-	letter-spacing: 5px;
-	font-weight: bolder;
-}
 nav button{
 	display: block;
 	width: 100%;
