@@ -1,0 +1,57 @@
+header{
+  font-weight: bold;
+  padding: 15px;
+}
+header img{
+  height: 18px;
+  background-color: white;
+  outline: none;
+}
+header label{
+  padding: 10px;
+  background-color: white;
+  outline: none;
+}
+header a{
+  cursor: pointer;
+  background-color: white;
+  padding: 10px;
+}
+table{
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+}
+table tr{
+  font-size: small;
+  padding: 15px;
+}
+table tr th{
+  text-align: left;
+  background-color: white;
+  padding: 8px;
+  border-bottom: 1px solid whitesmoke;
+}
+table tr td{
+  background-color: none;
+  padding: 8px;
+  background-color: white;
+}
+table tr #courseCode{
+  width: 10%;
+}
+table tr #courseTitle{
+  width: 50%;
+}
+table tr #courseDescription{
+  width: 30px;
+}
+table tr #courseUnit{
+   width: 50px;
+  text-align: center;
+}
+main {
+  margin: 20px;
+  background-color: white;
+  padding: 15px;
+}
