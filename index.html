@@ -147,7 +147,7 @@
       const process = document.getElementById("serverResponse");
       submit.addEventListener('click', function (){
         var username = document.getElementById("username").value;
-        process.innerHTML = "Please wait..."
+        process.innerHTML = "Please wait...";
         firebase.database().ref('USERS').on('value', function (snapshot){
           snapshot.forEach(element => {
             if(element.val().username == username){
