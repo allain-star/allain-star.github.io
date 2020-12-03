@@ -1,64 +1,210 @@
 <!DOCTYPE html>
-
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="css/icons/logo.png">
-    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <title>CIE</title>
+    <link rel="stylesheet" type="text/css" href="css/layout.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="preconnect" href="https://fonts.gstatic.com"><link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap" rel="stylesheet">  
+    <script type="text/javascript" src="js/responsiveness.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-database.js"></script>
-   	<title>Login</title>
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-analytics.js"></script>
   </head>
   <body>
-    <main class="loginForm">
-      <header><img src="css/icons/user.svg"><label>LOGIN</label></header>
-      <input type="text" placeholder="Username" id="username" required><br>
-      <div class="serverResponse" id="response" style="display: none;"></div>
-      <button id="loginBtn">LOGIN</button>
+
+    <header>
+      <div class="banner">
+        <span><img src="css/icons/tuplogo.png" height="48.5px"><img src="css/icons/logo.png" height="45px" style="margin-left: 2px; border-left: 1px solid whitesmoke; position: absolute; margin-top: 2px; padding-left: 5px;"><label>COLLEGE OF INDUSTRIAL EDUCATION</label><span class="sub-label">Technological University of the Philippines</span>
+      </div>
+    </header>
+  
+    <nav id="navBar">   
+      <button data-tab-target="#home" class="active" onclick="openNav(this)">Home</button>
+      <button data-tab-target="#programs" onclick="openNav(this)">Programs</button>
+      <button data-tab-target="#departments" onclick="openNav(this)">Departments</button>
+      <button id="logoutButton" class="login" style="width: 60px; float: right; margin-right: 100px; color: red; padding: 5px; margin: 10px; font-weight: bolder; border-radius: 3px; display: none;">Logout</button>
+      <button id="loginButton" class="login" style="width: 60px; float: right; margin-right: 100px; background-color: rgb(160, 160, 218); color: white; padding: 5px; margin: 10px; font-weight: bolder; border-radius: 3px;">Login</button>
+      <span id="userInfo" style="float: right; display: none; background: none; margin: 15px; margin-right: 0px; font-weight: bold; font-size: small;"></span>
+    </nav>
+  
+    <main>
+      <div id="home" class="active" data-tab-content>
+        <div class="homeContent">
+          <div class="goals" id="university">
+            
+            <header>VISION</header>
+            <p>A premier state university with recognized excellence in engineering and technology education at par with leading universities in the ASEAN region.</p>
+            <header>MISSION</header>
+            <p>The mission of TUP is stated in Section 2 of P.D. No. 1518 as follows:<br><br>The University shall provide higher and advanced vocational, technical, industrial, technological and professional education and training in industries and technology, and in practical arts leading to certificates, diplomas and degrees. It shall provide progressive leadership in applied research, developmental studies in technical, industrial, and technological fields and production using indigenous materials; effect technology transfer in the countryside; and assist in the development of small-and-medium scale industries in identified growth centers.</p>
+            <header>CORE VALUES</header>
+            <p style="line-height: 30px;">
+              <strong>T</strong> - Transparent and participatory governance<br>
+              <strong>U</strong> - Unity in the pursuit of TUP mission, goals, and objectives<br>
+              <strong>P</strong> - Professionalism in the discharge of quality service<br>
+              <strong>I</strong> - Integrity and commitment to maintain the good name of the University<br>
+              <strong>A</strong> - Accountability for individual and organizational quality performance<br>
+              <strong>N</strong> - Nationalism through tangible contribution to the rapid economic growth of the country<br>
+              <strong>S</strong> - Shared responsibility, hardwork, and resourcefulness in compliance to the mandates of the university<br>
+            </p>
+          
+          </div>
+  
+          <div class="goals" id="college">
+          
+            <header>CIE HISTORY</header>
+            <p>The roots of the College of Industrial Education (CIE) can be traced in 1929 when the first formal two-year Industrial Teacher Education was offered at the then Philippine School of Arts and Trades. At present, the college serves as the foundation of teacher education in the University. The BS in Industrial Education program at CIE has been offered since 1951 as a four-year teacher education for elementary and secondary levels. Currently, CIE is composed of four departments, namely: Professional Industrial Education, Student Teaching, Technical Arts, and Home Economics.</p>
+            <header>CIE GOAL</header>
+            <p>The College of Industrial Education commits itself to develop highly competent teachers/trainors, leaders, managers, and innovators in industrial and technology education and training, as well as industry through responsive and relevant programs and proactive human resources in an environment of change.</p>
+            <header>COLLEGE OBJECTIVES</header>
+            <p style="line-height: 30px;">
+              1. Improve effectiveness of instruction, research, management, administration, information systems and procedures to make the College responsive and relevant to the needs of the society<br>
+              2. Enhance partnership with industry, public, and NGOs to support efforts for life long learning<br>
+              3. Achieve financial viability and sustainability to augment operational resources
+                 Strengthen the core values of excellence, commitment, cooperation, hard work, scholarship, creativity, resourcefulness and teamwork among teachers and students<br>
+              4. Achieve third level accreditation for both graduate and undergraduate programs
+          </div>
+        
+        </div>
+
+      </div>
+    
+      
+      <div id="programs" class="content" data-tab-content>
+          <div class="wrapper">
+            <header>Programs</header>
+            <a  href="pages/deiem.html"><div class="items">Doctor of Education in Industrial Education Management</div></a>
+            <a href="#"><div class="items">Masters of Arts in Industrial Education</div></a>
+          </div>
+      </div>
+      
+      <div id="departments" class="content" data-tab-content>
+<<<<<<< HEAD
+        <div class="wrapper">
+          <header>Departments</header>
+          <a><div class="items">Dean's Office</div></a>
+          <div >dasdasd</div>
+          <a><div class="items">Technical Arts Department</div></a>
+          <a><div class="items">Professional industrial Education Department</div></a>
+          <a><div class="items">Home Economics Department</div></a>
+        </div>
+=======
+        dfjsdkfhskdj
+>>>>>>> e0a042bc67b75ea056e7b4069b50a822355a5af9
+      </div>
+      
     </main>
+      
+      <div class="background" id="background">
+      </div>
+      
+      <div id="loginModal" class="Modal">
+        <header style="font-weight: bold;">LOGIN</header>
+        <input type="text" placeholder="Username" id="username"><br><br>
+<<<<<<< HEAD
+        <p style="margin-top: -15px; margin-bottom: 5px; background-color: white; text-align: center; padding: 8px;" id="serverResponse"></p>
+=======
+>>>>>>> e0a042bc67b75ea056e7b4069b50a822355a5af9
+        <button id="submitBtn">Login</button>
+        <button id="cancelBtn">Cancel</button>
+      </div>
     
     <script>
-    
-    var firebaseConfig = {
-      apiKey: "AIzaSyDGD1OvJtu3Z0sWCvGz_MW8I8xbNRjxq84",
-      authDomain: "weconnectmoto.firebaseapp.com",
-      databaseURL: "https://weconnectmoto.firebaseio.com",
-      projectId: "weconnectmoto",
-      storageBucket: "weconnectmoto.appspot.com",
-      messagingSenderId: "785399505200",
-      appId: "1:785399505200:web:af31d23588f6ebeaaae8f5",
-      measurementId: "G-RGXEL9WZ0P"
-    };
+      var firebaseConfig = {
+        apiKey: "AIzaSyDGD1OvJtu3Z0sWCvGz_MW8I8xbNRjxq84",
+        authDomain: "weconnectmoto.firebaseapp.com",
+        databaseURL: "https://weconnectmoto.firebaseio.com",
+        projectId: "weconnectmoto",
+        storageBucket: "weconnectmoto.appspot.com",
+        messagingSenderId: "785399505200",
+        appId: "1:785399505200:web:af31d23588f6ebeaaae8f5",
+        measurementId: "G-RGXEL9WZ0P"
+      };
+      firebase.initializeApp(firebaseConfig);
 
-    firebase.initializeApp(firebaseConfig);
-
-    const loginbutton = document.getElementById("loginBtn");
-    const responseTab = document.getElementById("response");
-    const user = document.getElementById("username");
-    var userName = " ";
-
-    loginbutton.addEventListener('click', function(){
-        var response = "";
-        userName = user.value;
-        console.log(userName);
-        responseTab.style.display = "block";
-        responseTab.innerHTML = "Please wait . . .";
-        firebase.database().ref('USERS').on('value', function(snapshot){
+      window.onscroll = function() {myFunction()};
+      
+      var navbar = document.getElementById("navBar");
+      var sticky = navbar.offsetTop;
+            
+      function myFunction() {
+        if (window.pageYOffset >= sticky) {
+            navbar.classList.add("sticky")
+        } else {
+            navbar.classList.remove("sticky");
+        }
+      }
+      
+<<<<<<< HEAD
+=======
+       
+>>>>>>> e0a042bc67b75ea056e7b4069b50a822355a5af9
+      const loginButton = document.getElementById("loginButton");
+      const modal = document.getElementById("loginModal");
+      const cancelButton = document.getElementById("cancelBtn");
+      const submit = document.getElementById("submitBtn");
+      const ground = document.getElementById("background");
+      
+      loginButton.addEventListener('click', function (){
+        modal.style.display = "block";
+        ground.style.display = "block";
+      });
+      cancelButton.addEventListener('click', function (){
+        modal.style.display = "none";
+        ground.style.display = "none";
+      });
+      
+      const userChipt = document.getElementById("userInfo");
+<<<<<<< HEAD
+      const process = document.getElementById("serverResponse");
+      submit.addEventListener('click', function (){
+        var username = document.getElementById("username").value;
+        process.innerHTML = "Please wait..."
+        firebase.database().ref('USERS').on('value', function (snapshot){
           snapshot.forEach(element => {
-            if(element.val().username == userName){
-              sessionStorage.setItem("uid", userName);
-              location.replace("pages/home.html");
+            if(element.val().username == username){
+              localStorage.setItem("user", "Welcome! "+element.val().username);
+              ground.style.display = "none";
+              modal.style.display = "none";
+=======
+      submit.addEventListener('click', function (){
+        var username = document.getElementById("username").value;
+        firebase.database().ref('USERS').on('value', function (snapshot){
+          snapshot.forEach(element => {
+            if(element.val().username == username){
+              ground.style.display = "none";
+              modal.style.display = "none";
+              localStorage.setItem("user", "Welcome! "+element.val().username);
+>>>>>>> e0a042bc67b75ea056e7b4069b50a822355a5af9
+              loginButton.style.display = "none";
+              userChipt.innerHTML = element.val().username;
+              userChipt.style.display = "block";
+              location.reload(); 
+<<<<<<< HEAD
             }else{
-              responseTab.innerHTML = "Invalid Username";
+              process.innerHTML = "Invalide Credentials";
+=======
+>>>>>>> e0a042bc67b75ea056e7b4069b50a822355a5af9
             }
           });
-                    
         });
-    });
-    
+      });
+      
+      const logoutButton = document.getElementById("logoutButton");
+      logoutButton.addEventListener('click', function(){
+        localStorage.setItem("user", "login");  
+        location.reload();
+      });
+      
+      if(localStorage.getItem("user") == "login"){
+        loginButton.style.display = "block";
+      }else{
+        userChipt.innerHTML = localStorage.getItem('user');
+        loginButton.style.display = "none";
+        userChipt.style.display = "block";
+        logoutButton.style.display = "block";
+      }
+      
     </script>
-    
   </body>
-
 </html>
