@@ -125,15 +125,15 @@
       const modal = document.getElementById("loginModal");
       const cancelButton = document.getElementById("cancelBtn");
       const submit = document.getElementById("submitBtn");
-      const background = document.getElementById("background");
+      const ground = document.getElementById("background");
       
       loginButton.addEventListener('click', function (){
         modal.style.display = "block";
-        background.style.display = "block";
+        ground.style.display = "block";
       });
       cancelButton.addEventListener('click', function (){
         modal.style.display = "none";
-        background.style.display = "none";
+        ground.style.display = "none";
       });
       
       const userChipt = document.getElementById("userInfo");
@@ -142,16 +142,14 @@
         firebase.database().ref('USERS').on('value', function (snapshot){
           snapshot.forEach(element => {
             if(element.val().username == username){
-              console.log("HI USER!");
+              ground.style.display = "none";
               modal.style.display = "none";
               localStorage.setItem("user", "Welcome! "+element.val().username);
               loginButton.style.display = "none";
               userChipt.innerHTML = element.val().username;
               userChipt.style.display = "block";
-            }else{
-              console.log("REGISTER FIRST");
+              location.reload(); 
             }
-            console.log(localStorage.getItem("user"));
           });
         });
       });
