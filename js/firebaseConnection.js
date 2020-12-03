@@ -33,13 +33,8 @@
             var _unit = element.val().unit;
             var refCode = element.val().id;
             var pdf = element.val().pdf;
-<<<<<<< HEAD
               //<button style='outine: none; border: none; cursor: pointer;background: none; font-family: 'Source Sans Pro', sans-serif; margin-left: -5px; padding-left: 0px;' onclick='deleteData("+refCode+")'><img src='../css/icons/delete.png' height='22px padding: 0px; outline: none;'></button>
               content += "<tr style='font-weight: bold; border-bottom: 1px solid whitesmoke;'><td>"+_code+"</td><td>"+_title+"</td><td>"+_description+"</td><td>"+_unit+"</td><td><button style='background: none; border: none; outline: none;' onclick='openPdf("+refCode+")' ><img src='../css/icons/pdf.svg' style='height: 22px; margin: 0px; cursor: pointer; border-right: 1px solid gray; padding-right: 12px;'></button></td></tr>";
-=======
-           
-              content += "<tr style='font-weight: bold; border-bottom: 1px solid whitesmoke;'><td>"+_code+"</td><td>"+_title+"</td><td>"+_description+"</td><td>"+_unit+"</td><td><button style='background: none; border: none; outline: none;' onclick='openPdf("+refCode+")' ><img src='../css/icons/pdf.svg' style='height: 22px; margin: 0px; cursor: pointer; border-right: 1px solid gray; padding-right: 12px;'></button><button style='outine: none; border: none; cursor: pointer;background: none; font-family: 'Source Sans Pro', sans-serif; margin-left: -5px; padding-left: 0px;' onclick='deleteData("+refCode+")'><img src='../css/icons/delete.png' height='22px padding: 0px; outline: none;'></button></td></tr>";
->>>>>>> e0a042bc67b75ea056e7b4069b50a822355a5af9
            
             document.getElementById('dataTable').innerHTML += content;
             

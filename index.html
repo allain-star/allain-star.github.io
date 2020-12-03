@@ -79,7 +79,6 @@
       </div>
       
       <div id="departments" class="content" data-tab-content>
-<<<<<<< HEAD
         <div class="wrapper">
           <header>Departments</header>
           <a><div class="items">Dean's Office</div></a>
@@ -88,9 +87,6 @@
           <a><div class="items">Professional industrial Education Department</div></a>
           <a><div class="items">Home Economics Department</div></a>
         </div>
-=======
-        dfjsdkfhskdj
->>>>>>> e0a042bc67b75ea056e7b4069b50a822355a5af9
       </div>
       
     </main>
@@ -101,10 +97,7 @@
       <div id="loginModal" class="Modal">
         <header style="font-weight: bold;">LOGIN</header>
         <input type="text" placeholder="Username" id="username"><br><br>
-<<<<<<< HEAD
         <p style="margin-top: -15px; margin-bottom: 5px; background-color: white; text-align: center; padding: 8px;" id="serverResponse"></p>
-=======
->>>>>>> e0a042bc67b75ea056e7b4069b50a822355a5af9
         <button id="submitBtn">Login</button>
         <button id="cancelBtn">Cancel</button>
       </div>
@@ -135,10 +128,6 @@
         }
       }
       
-<<<<<<< HEAD
-=======
-       
->>>>>>> e0a042bc67b75ea056e7b4069b50a822355a5af9
       const loginButton = document.getElementById("loginButton");
       const modal = document.getElementById("loginModal");
       const cancelButton = document.getElementById("cancelBtn");
@@ -155,7 +144,6 @@
       });
       
       const userChipt = document.getElementById("userInfo");
-<<<<<<< HEAD
       const process = document.getElementById("serverResponse");
       submit.addEventListener('click', function (){
         var username = document.getElementById("username").value;
@@ -166,25 +154,12 @@
               localStorage.setItem("user", "Welcome! "+element.val().username);
               ground.style.display = "none";
               modal.style.display = "none";
-=======
-      submit.addEventListener('click', function (){
-        var username = document.getElementById("username").value;
-        firebase.database().ref('USERS').on('value', function (snapshot){
-          snapshot.forEach(element => {
-            if(element.val().username == username){
-              ground.style.display = "none";
-              modal.style.display = "none";
-              localStorage.setItem("user", "Welcome! "+element.val().username);
->>>>>>> e0a042bc67b75ea056e7b4069b50a822355a5af9
               loginButton.style.display = "none";
               userChipt.innerHTML = element.val().username;
               userChipt.style.display = "block";
               location.reload(); 
-<<<<<<< HEAD
             }else{
               process.innerHTML = "Invalide Credentials";
-=======
->>>>>>> e0a042bc67b75ea056e7b4069b50a822355a5af9
             }
           });
         });
