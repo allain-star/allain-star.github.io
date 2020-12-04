@@ -12,14 +12,12 @@
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
   
-  var allowAccess = " ";
+
   var programId = document.getElementById('programId').value;
-  validateUser(sessionStorage.getItem("uid"));
   
   
-  if(allowAccess == "denied"){
-     console.log("Login first!");
-  }else{
+  
+  
     
     function loadData(){
     
@@ -35,13 +33,10 @@
             var _unit = element.val().unit;
             var refCode = element.val().id;
             var pdf = element.val().pdf;
-            
-            if( i%2 == 0)
-              content += '<tr style="background-color: #f2f2f2; padding: 8px; text-align: left;"><td><button style="background: none; border: none; text-align: left; font-family: "Source Sans Pro", sans-serif; outline: none;">'+_code+'</button></td><td style="font-family: "Source Sans Pro", sans-serif;">'+_title+'</td><td style="font-family: "Source Sans Pro", sans-serif;">'+_description+'</td><td style="text-align: center; font-family: "Source Sans Pro", sans-serif;">'+_unit+'</td><td><button style="background: none; border: none; outline: none;" onclick="openPdf('+refCode+')" ><img src="../css/icons/pdf.svg" style="height: 22px; margin: 0px; cursor: pointer; border-right: 1px solid gray; padding-right: 12px;"></button><button style="outine: none; border: none; cursor: pointer;background: none; font-family: "Source Sans Pro", sans-serif; margin-left: -5px; padding-left: 0px;" onclick="deleteData('+refCode+')"><img src="../css/icons/delete.png" height="22px padding: 0px; outline: none;"></button></td></tr>';
-            else
-              content += "<tr style='padding: 8px; background: none; padding: 8px;'><td><button style='background: none; border: none; text-align: left; outline: none; font-family: 'Source Sans Pro', sans-serif;'>"+_code+"</button></td><td>"+_title+"</td><td style=''>"+_description+"</td><td style='text-align: center; '>"+_unit+"</td><td><button style='background: none; border: none; outline: none;' onclick='openPdf("+refCode+")' ><img src='../css/icons/pdf.svg' style='height: 22px; margin: 0px; cursor: pointer; border-right: 1px solid gray; padding-right: 12px;'></button><button style='outine: none; border: none; cursor: pointer;background: none; font-family: 'Source Sans Pro', sans-serif; margin-left: -5px; padding-left: 0px;' onclick='deleteData("+refCode+")'><img src='../css/icons/delete.png' height='22px padding: 0px; outline: none;'></button></td></tr>"; 
+              content += "<tr style='font-weight: bold; border-bottom: 1px solid whitesmoke;'><td>"+_code+"</td><td>"+_title+"</td><td>"+_description+"</td><td>"+_unit+"</td><td><button style='background: none; border: none; outline: none;' onclick='openPdf("+refCode+")' ><img src='../css/icons/pdf.png' style='height: 22px; margin: 0px; cursor: pointer; border-right: 1px solid gray; padding-right: 12px;'></button><button style='outine: none; border: none; cursor: pointer;background: none; font-family: 'Source Sans Pro', sans-serif; margin-left: -5px; padding-left: 0px;' onclick='deleteData("+refCode+")'><img src='../css/icons/delete.png' height='22px padding: 0px; outline: none;'></button></td></tr>";
+           
             document.getElementById('dataTable').innerHTML += content;
-            i++;
+            
           });
 
         });
@@ -128,7 +123,7 @@
                 window.open(snapshot.val().pdf);
               }); 
             } 
-  }
+  
   
   function logout(){
     location.replace("../index.html");
@@ -142,4 +137,20 @@
         allowAccess = "denied";
       
     });
+  }
+  
+  var backtoTopBtn = document.getElementById("floatingButton");  
+  window.onscroll = function() {scrollFunction()};
+
+  function scrollFunction() {
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+      backtoTopBtn.style.display = "block";
+    } else {
+      backtoTopBtn.style.display = "none";
+    }
+  }
+  
+  function topFunction() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
   }
