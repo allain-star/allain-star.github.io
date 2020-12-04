@@ -1,138 +1,153 @@
 <!DOCTYPE html>
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CIE</title>
-    <link rel="stylesheet" type="text/css" href="css/layout.css">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
-    <script type="text/javascript" src="js/responsiveness.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-database.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-storage.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-analytics.js"></script>
-  </head>
-  <body>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+<style>
+    * {box-sizing: border-box;}
+    body {font-family: Verdana, sans-serif;
+      overflow-x: hidden;}
+    .mySlides {display: none;}
+    img {vertical-align: middle;}
 
-    <header>
-      <div class="banner">
-        <span><img src="css/icons/tuplogo.png" height="48.5px"><img src="css/icons/logo.png" height="45px" style="margin-left: 2px; border-left: 1px solid whitesmoke; position: absolute; margin-top: 2px; padding-left: 5px;"><label>COLLEGE OF INDUSTRIAL EDUCATION</label><span class="sub-label">Technological University of the Philippines</span>
-      </div>
-    </header>
+    /* Slideshow container */
+    .slideshow-container {
+      margin-top: 110px;
+      max-width: 700px;
+      position: fixed;
+      float: right; 
+      left: 50%;
+      top: 3%;
+      margin-right: -10px;
+    }
+    .slideshow-container img{
+      height: 450px;
+      border-radius: 5px;
+      box-shadow: 0 8px 8px rgba(0,0,0,0.19), 0 0px 0px rgba(0,0,0,0.23);
+    }
+
+    .active {
+      background-color: #717171;
+    }
+
+    /* Fading animation */
+    .fade {
+      -webkit-animation-name: fade;
+      -webkit-animation-duration: 1.5s;
+      animation-name: fade;
+      animation-duration: 1.5s;
+    }
+
+    @-webkit-keyframes fade {
+      from {opacity: .4} 
+      to {opacity: 1}
+    }
+
+    @keyframes fade {
+      from {opacity: .4} 
+      to {opacity: 1}
+    }
+
+    /* On smaller screens, decrease text size */
+    @media only screen and (max-width: 300px) {
+      .text {font-size: 11px}
+    }
+    #headerDescription{
+      position: absolute;
+      top: 25%;
+      left: 10%;
+      padding: 50px;
+      font-size: large;
+      width: 540px;
+      text-align: right;
+      font-family: 'Montserrat', sans-serif;
+    }
+    header{
+        padding: 15px;
+        font-family: 'Montserrat', sans-serif;
+        position: fixed;
+        width: 100%;
+        padding-left: 50px;
+      }
+    header img{
+      height: 40px;
+    }
+    header span{
+      padding: 10px;
+      position: fixed;
+      font-weight: bolder;
+    }
+</style>
+</head>
+<body>
+  <header><img src="css/images/pie-graph.png"><span>CPRM</span></header>
+  <span id="headerDescription">
+    <h2>Curriculum Program Repository Management </h2>
+    <p>For College of Industrial Education</p>
+    <button onclick="location.replace('pages/home.html');" style="outline: none; width: 100%; background: none; background-color: #c51e3a; padding: 12px; cursor: pointer; border: none; color: white; border-radius: 4px;">OPEN</button>
+  </span>
   
-    <nav id="navBar">   
-      <button data-tab-target="#home" class="active" onclick="openNav(this)">Home</button>
-      <button data-tab-target="#programs" onclick="openNav(this)">Programs</button>
-      <button data-tab-target="#departments" onclick="openNav(this)">Departments</button>
-      <button id="logoutButton" class="login" style="width: 60px; float: right; margin-right: 100px; color: red; padding: 5px; margin: 10px; font-weight: bolder; border-radius: 3px; display: none;">Logout</button>
-      <button id="loginButton" class="login" style="width: 60px; float: right; margin-right: 100px; background-color:#c51e3a; color: white; padding: 5px; margin: 10px; font-weight: bolder; border-radius: 3px;">Login</button>
-      <span id="userInfo" style="float: right; display: none; background: none; margin: 15px; margin-right: 0px; font-weight: bold; font-size: small;"></span>
-    </nav>
-  
-    <main>
-      <div id="home" class="active" data-tab-content>
-        <div class="homeContent">
-          <div class="goals" id="university">
-            
-            <h3 style="background-color: white; width: 100%; text-align: center;">TUP MISSION</h3>
-            <p>The Technological University of the Philippines shall provide higher and advanced vocational, technical, industrial, technological and professional education and training in industries and technology and in practical arts leading to applied research, certificates, diplomas and degrees. It shall provide progressive leadership in developmental studies in technical, industrial and technological fields and production using indigenous materials, effect technology transfer in the countryside; and assist in the development of small and medium scale industries in identified growth-centers</p>
-            <h3 style="background-color: white; width: 100%; text-align: center;">TUP VISION</h3>
-            <p>The Technological University of the Philippines shall be the premier state university with recognized excellence in engineering and technology education at par with the leading universities in the ASEAN Region.</p>
-            <header>CORE VALUES</header>
-            <p style="line-height: 30px;">
-              <strong>T</strong> - Transparent and participatory governance<br>
-              <strong>U</strong> - Unity in the pursuit of TUP mission, goals, and objectives<br>
-              <strong>P</strong> - Professionalism in the discharge of quality service<br>
-              <strong>I</strong> - Integrity and commitment to maintain the good name of the University<br>
-              <strong>A</strong> - Accountability for individual and organizational quality performance<br>
-              <strong>N</strong> - Nationalism through tangible contribution to the rapid economic growth of the country<br>
-              <strong>S</strong> - Shared responsibility, hardwork, and resourcefulness in compliance to the mandates of the university<br>
-            </p>
-          
-          </div>
-  
-          <!--<div class="goals" id="college">
-          
-            <header>CIE MISSION</header>
-            <p>The Technological University of the Philippines shall provide higher and advanced vocational, technical, industrial, technological and professional education and training in industries and technology and in practical arts leading to applied research, certificates, diplomas and degrees. It shall provide progressive leadership in developmental studies in technical, industrial and technological fields and production using indigenous materials, effect technology transfer in the countryside; and assist in the development of small and medium scale industries in identified growth-centers</p>
-            <header>CIE GOAL</header>
-            <p>The College of Industrial Education commits itself to develop highly competent teachers/trainors, leaders, managers, and innovators in industrial and technology education and training, as well as industry through responsive and relevant programs and proactive human resources in an environment of change.</p>
-            <header>Vision</header>
-            <p style="line-height: 30px;">
-              The Technological University of the Philippines shall be the premier state university with recognized excellence in engineering and technology education at par with the leading universities in the ASEAN Region
-          </div> -->
+  <div class="slideshow-container">
+
+    <div class="mySlides fade">
+      <img src="css/images/3.png" style="width:100%">
+    </div>
+    
+    <div class="mySlides fade">
+      <img src="css/images/2.png" style="width:100%">
+    </div>
+    
+    <div class="mySlides fade">
+      <img src="css/images/1 (2).png" style="width:100%">
+    </div>
+    
+    <div class="mySlides fade">
+      <img src="css/images/4.png" style="width:100%">
+    </div>
+    
+    <div class="mySlides fade">
+      <img src="css/images/5.png" style="width:100%">
+    </div>
+    
+    <div class="mySlides fade">
+      <img src="css/images/6.png" style="width:100%">
+    </div>
+    
+    <div class="mySlides fade">
+      <img src="css/images/7.png" style="width:100%">
+    </div>
+    
+    <div class="mySlides fade">
+      <img src="css/images/8.png" style="width:100%">
+    </div>
+    
+    <div class="mySlides fade">
+      <img src="css/images/7.png" style="width:100%">
+    </div>
+    
+    </div>
+    <br>
+    
+    <script>
+      var slideIndex = 0;
+      showSlides();
+      
+      function showSlides() {
+        var i;
+        var slides = document.getElementsByClassName("mySlides");
+        var dots = document.getElementsByClassName("dot");
+        console.log(slides.length);
+        for (i = 0; i < slides.length; i++) {
+          slides[i].style.display = "none";  
+        }
+        slideIndex++;
+        if (slideIndex > slides.length) {slideIndex = 1}    
         
-        </div>
-
-      </div>
+        slides[slideIndex-1].style.display = "block";  
+        setTimeout(showSlides, 3000); 
+      }
+    </script>
     
-      
-      <div id="programs" class="content" data-tab-content>
-          <div class="wrapper">
-            <h3>Programs</h3>
-            
-            <div class="items">
-              Graduate 
-              <span>
-                <img src="css/icons/arrow-down-sign-to-navigate.png" style="float: right; height: 15px; padding-top: 5px; cursor: pointer;" class="graduateProgram" id="ButtonGrad" onclick="expandPrograms(this, 'ButtonGrad1')">
-                <img src="css/icons/up-arrow.png" style="float: right; height: 15px; padding-top: 5px; cursor: pointer; display: none;" class="graduateProgram" id="ButtonGrad1" onclick="minimizePrograms(this, 'ButtonGrad')">
-              </span>
-            </div>
-            <div id="graduateProgram1" style="padding: 8px; margin-top: -5px; display: none; background-color: white; margin-left: 20px; border-left: 4px solid #c51e3a;">
-              <a  href="pages/deiem.html"><div style="padding: 10px; background-color: white;">Doctor of Education in Industrial Education Management</div></a>
-              <a href="#"><div style="padding: 10px; background-color: white;">Masters of Arts in Industrial Education</div></a>
-            </div>
-            
-            <div class="items">
-            
-              Undergraduate 
-              <span>
-                <img src="css/icons/arrow-down-sign-to-navigate.png" style="float: right; height: 15px; padding-top: 5px; cursor: pointer;" class="undergraduateProgram" id="ButtonUnderGrad" onclick="expandPrograms(this, 'ButtonUnderGrad1')">
-                <img src="css/icons/up-arrow.png" style="float: right; height: 15px; padding-top: 5px; cursor: pointer; display: none;" class="undergraduateProgram" id="ButtonUnderGrad1" onclick="minimizePrograms(this, 'ButtonUnderGrad')">
-              </span>
-            </div>
-            
-            <div id="undergraduateProgram1" style="padding: 8px; margin-top: -5px; display: none; background-color: white; margin-left: 20px; border-left: 4px solid #c51e3a;">
-              
-              <a class="bsie" id="bsietitle" style="cursor: pointer;">
-                <div id="bsietitle" style="padding: 10px; background-color: white;">
-                  Bachelor of Science in Industrial Education
-                </div>
-              </a>
-              
-              <a class="btte" id="btteTitle" style="cursor: pointer;">
-                <div id="btteTitle" style="padding: 10px; background-color: white;">
-                  Bachelor of Technical-Vocational Teacher Education
-                </div>
-              </a>
-              
-            </div>
-           
-          </div>
-      </div>
-      
-      <div id="departments" class="content" data-tab-content>
-        <div class="wrapper">
-          <h3>Departments</h3>
-          <a><div class="items">Dean's Office</div></a>
-          <a><div class="items">Technical Arts Department</div></a>
-          <a><div class="items">Professional industrial Education Department</div></a>
-          <a><div class="items">Home Economics Department</div></a>
-        </div>
-      </div>
-      
-    </main>
-      
-      <div class="background" id="background">
-      </div>
-      
-      <div id="loginModal" class="Modal">
-        <header style="font-weight: bold;">LOGIN</header>
-        <input type="text" placeholder="Username" id="username"><br><br>
-        <p style="margin-top: -15px; margin-bottom: 5px; background-color: white; text-align: center; padding: 8px;" id="serverResponse"></p>
-        <button id="submitBtn">Login</button>
-        <button id="cancelBtn">Cancel</button>
-      </div>
-    
-    <script src="js/main_functions.js"></script>
-  </body>
-</html>
+    </body>
+    </html> 

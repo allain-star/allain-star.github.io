@@ -16,7 +16,7 @@
   
   <body onload="loadData()">
     <header style="background: white;">
-      <a href="../index.html"><img src="../css/icons/left-arrow.png" height="18px"></a>
+      <a href="home.html"><img src="../css/icons/left-arrow.png" height="18px"></a>
       <span>
         <img src="../css/icons/tuplogo.png" height="50px" style="height: 40px;"><img src="../css/icons/logo.png" height="45px" style="margin-left: 2px; border-left: 1px solid whitesmoke; position: absolute; margin-top: 1px; padding-left: 5px; height: 38px;">
       </span>
@@ -45,22 +45,7 @@
       <button id="floatingButton" onclick="topFunction()" style="cursor: pointer; display: none; position: fixed; top: 92%; left: 50%; transform: translate(-50%); background-color: #c51e3a; color: white; border-radius: 4px; width: auto;">Back to Top</button>
     </main>
     <script>
-      var backtoTopBtn = document.getElementById("floatingButton");  
-      window.onscroll = function() {scrollFunction()};
-
-      function scrollFunction() {
-        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-          backtoTopBtn.style.display = "block";
-        } else {
-          backtoTopBtn.style.display = "none";
-        }
-      }
-      
-      function topFunction() {
-        document.body.scrollTop = 0;
-        document.documentElement.scrollTop = 0;
-      }
-    
+     
     </script>
   </body>
   
