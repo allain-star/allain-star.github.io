@@ -12,20 +12,24 @@
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
   
-
+  var allowAccess = " ";
   var programId = document.getElementById('programId').value;
+  validateUser(localStorage.getItem("user"));
   
+  if( localStorage.getItem("user") == "login")
+    document.getElementById("addingCourseButton").style.display = "none";
+  else
+  document.getElementById("addingCourseButton").style.display = "block";
   
-  
-  
+  if(allowAccess == "denied"){
+     //console.log("Login first!");
+  }else{
     
     function loadData(){
     
-      var i = 0;
-           firebase.database().ref(programId).orderByChild("code").on('value', function (snapshot){
-          
+     
+          firebase.database().ref(programId).orderByChild("code").on('value', function (snapshot){
           snapshot.forEach(element => {
-      
             var content = '';
             var _code = element.val().code;
             var _title = element.val().title;
@@ -33,24 +37,22 @@
             var _unit = element.val().unit;
             var refCode = element.val().id;
             var pdf = element.val().pdf;
-              content += "<tr style='font-weight: bold; border-bottom: 1px solid whitesmoke;'><td>"+_code+"</td><td>"+_title+"</td><td>"+_description+"</td><td>"+_unit+"</td><td><button style='background: none; border: none; outline: none;' onclick='openPdf("+refCode+")' ><img src='../css/icons/pdf.png' style='height: 22px; margin: 0px; cursor: pointer; border-right: 1px solid gray; padding-right: 12px;'></button><button style='outine: none; border: none; cursor: pointer;background: none; font-family: 'Source Sans Pro', sans-serif; margin-left: -5px; padding-left: 0px;' onclick='deleteData("+refCode+")'><img src='../css/icons/delete.png' height='22px padding: 0px; outline: none;'></button></td></tr>";
-           
-            document.getElementById('dataTable').innerHTML += content;
             
+            if(localStorage.getItem("user") != "login")
+              content += "<tr style='font-weight: bold; border-bottom: 1px solid whitesmoke;'><td>"+_code+"</td><td>"+_title+"</td><td style='word-wrap: break-word; min-width: 800px;'>"+_description+"</td><td style='text-align: center;'>"+_unit+"</td><td style='text-align: right;'><button style='background: none; border: none; outline: none; margin-right: -37px;' onclick='openPdf("+refCode+")' ><img src='../css/icons/pdf.png' style='height: 22px; margin: 0px; cursor: pointer; border-right: 1px solid gray; padding-right: 4px;'></button><button style='outine: none; border: none; cursor: pointer;background: none; font-family: 'Source Sans Pro', sans-serif;' onclick='deleteData("+refCode+")'><img src='../css/icons/delete.png' height='22px padding: 0px; outline: none; margin-left: 0px;'></button></td></tr>";
+            else
+            content += "<tr style='font-weight: bold; border-bottom: 1px solid whitesmoke;'><td>"+_code+"</td><td>"+_title+"</td><td style='word-wrap: break-word; min-width: 800px;'>"+_description+"</td><td style='text-align: center;'>"+_unit+"</td><td style='text-align: right;'><button style='float:right; background: none; border: none; outline: none; margin-right: 0px;' onclick='openPdf("+refCode+")' ><img src='../css/icons/pdf.png' style='height: 22px; margin: 0px; cursor: pointer; padding-right: 4px;'></button><button style='outine: none; border: none; cursor: pointer;background: none; font-family: 'Source Sans Pro', sans-serif;' onclick='deleteData("+refCode+")'></td></tr>";
+            
+            document.getElementById('dataTable').innerHTML += content;
           });
 
         });
-        
-            
-     
-      
     }
     
     var selectedFile;
     const file = document.getElementById('fileUploader');
             file.addEventListener('change', function(e){
               selectedFile = event.target.files[0];
-              var storageRef = firebase.storage().ref('/files/');
               console.log(selectedFile);           
             });
     
@@ -61,7 +63,7 @@
             submitBtn.addEventListener('click', function(){
               uploadStatus.style.display = "block";
               //COURSE CONTENT
-              var id = document.getElementById('numCode').value;        
+              var id = Math.floor(Math.random() * 1000);        
               var Code = document.getElementById('courseCode').value;
               var Title = document.getElementById('courseTitle').value;
               var Description = document.getElementById('courseDescription').value;
@@ -109,13 +111,14 @@
               
           
             function deleteData(idd){
+              confirm("Are you sure to delete ?");
               firebase.database().ref(programId+"/"+idd).on('value', function (snapshot){
                 fileId = snapshot.val().file;
-              });
-              firebase.storage().ref(fileId).delete();
-              firebase.database().ref(programId+"/"+idd).remove();    
-              alert('Remove row');
-              location.reload();    
+                firebase.database().ref(programId+"/"+idd).remove();    
+                firebase.storage().ref().child(snapshot.val().file).delete();
+              });  
+                
+              setTimeout(function (){ location.reload(); }, 2000);  
             }
             
             function openPdf(id){
@@ -124,7 +127,7 @@
               }); 
             } 
   
-  
+  } 
   function logout(){
     location.replace("../index.html");
   }
@@ -154,3 +157,14 @@
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
   }
+
+
+function addCourse(){
+  document.getElementById("courseModal").style.display = "block";
+  document.getElementById("bg").style.display = "block";
+}
+
+function closeModal(){
+  document.getElementById("courseModal").style.display = "none";
+  document.getElementById("bg").style.display = "none";
+}

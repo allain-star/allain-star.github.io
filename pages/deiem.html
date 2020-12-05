@@ -20,7 +20,8 @@
       <span>
         <img src="../css/icons/tuplogo.png" height="50px" style="height: 40px;"><img src="../css/icons/logo.png" height="45px" style="margin-left: 2px; border-left: 1px solid whitesmoke; position: absolute; margin-top: 1px; padding-left: 5px; height: 38px;">
       </span>
-      <label style="padding-left: 60px;">Programs | Doctor of Education in Industrial Education Management</label>
+      <label style="padding-left: 60px;">Doctor of Education in Industrial Education Management</label>
+      <span style="margin-left: 55%; padding: 10px; cursor: pointer;" id="addingCourseButton"><img src="../css/icons/plus.png" onclick="addCourse()"></span>
     </header>
     <div class="courseIntro">
       <div style="width: 100%; font-family: 'Montserrat', sans-serif; padding: 15px; background-color: white;"><strong style="background-color: white;">PROGRAM EDUCATIONAL OBJECTIVES</strong><br> 
@@ -35,18 +36,37 @@
           <th style="width: 80px;">Code</th>
           <th style="width: 300px;">Title</th>
           <th>Description</th>
-          <th>Unit</th>
-          <th></th>
+          <th style="max-width: 85px;">Unit</th>
+          <th style="min-width: 150px;"></th>
         </tr>
         <tbody id="dataTable"></tbody>
       </table>
-      <input type="text" id="programId" value="deiem" hidden>
-      <script type="text/javascript" src="../js/firebaseConnection.js"></script>
+      <input type="text" id="programId" value="MAT" hidden>
       <button id="floatingButton" onclick="topFunction()" style="cursor: pointer; display: none; position: fixed; top: 92%; left: 50%; transform: translate(-50%); background-color: #c51e3a; color: white; border-radius: 4px; width: auto;">Back to Top</button>
     </main>
-    <script>
-     
-    </script>
+    
+    <div class="background" id="bg">
+    </div>
+    
+    <div id="courseModal" class="insertCourseModal">
+      <header style="font-weight: bold;">ADDING COURSE</header>
+      <div style="border: 1px solid whitesmoke; background-color: white; padding: 10px; margin-top: 8px; border-radius: 5px;">
+        <br><input type="text" placeholder="Code" id="courseCode" style="width: 20%;" required> 
+        <input type="text" placeholder="Course Title" id="courseTitle" style="width: 67%;" required><br> 
+        <textarea rows="4" cols="50" style="width: 93%; text-align: left;" id="courseDescription" placeholder="Course Desciption" required></textarea><br>
+        <input type="text" placeholder="Units" id="numberUnits" required> 
+        <input type="file" style="border: none;" id="fileUploader" required>
+      </div>
+      <br><button class="majorButtons" id="submit" style="width: 49%; padding: 15px;">Submit</button>
+      <button style="width: 49%; padding: 15px; border: none; outline: none; cursor: pointer;" onclick="closeModal('courseModal')" id="closeButton">Cancel</button>
+      
+    </div>
+    <div id="uploadingStatus">
+      Uploading File. . .<span id="uploadPercentage" style="background-color: white;"> </span>
+    </div>
+    <script type="text/javascript" src="../js/firebaseConnection.js"></script>
+      
+    
   </body>
   
 </html>

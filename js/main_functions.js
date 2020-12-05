@@ -46,7 +46,7 @@ submit.addEventListener('click', function (){
   firebase.database().ref('USERS').on('value', function (snapshot){
     snapshot.forEach(element => {
       if(element.val().username == username){
-        localStorage.setItem("user", "Welcome! "+element.val().username);
+        localStorage.setItem("user", element.val().username);
         ground.style.display = "none";
         modal.style.display = "none";
         loginButton.style.display = "none";
@@ -54,7 +54,7 @@ submit.addEventListener('click', function (){
         userChipt.style.display = "block";
         location.reload(); 
       }else{
-        processStatus.innerHTML = "Invalidd Credentials";
+        processStatus.innerHTML = "Invalid Credentials";
         processStatus.style.color = "red";
       }
     });
