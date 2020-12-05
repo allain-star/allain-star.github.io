@@ -82,13 +82,17 @@
                       break;
                     case firebase.storage.TaskState.RUNNING: // or 'running'
                       console.log('Upload is running');
-                      upload.innerHTML = Math.floor(progress)+" %";
+                      upload.innerHTML = " ("+Math.floor(progress)+"%)";
                       break;
                   }
                   
                   if(progress == 100){
-                    upload.innerHTML = "Upload Complete";
-                    document.getElementById('courseModal').style.display = "none";
+                    upload.innerHTML = " Complete";
+                    setTimeout(function (){ 
+                        document.getElementById('courseModal').style.display = "none";  
+                        upload.style.display = "none";
+                    }, 3000);
+                    
                   }
                 
               }, function(error) {
@@ -111,14 +115,14 @@
               
           
             function deleteData(idd){
-              confirm("Are you sure to delete ?");
+              confirm("Are you sure?");
               firebase.database().ref(programId+"/"+idd).on('value', function (snapshot){
                 fileId = snapshot.val().file;
                 firebase.database().ref(programId+"/"+idd).remove();    
                 firebase.storage().ref().child(snapshot.val().file).delete();
               });  
                 
-              setTimeout(function (){ location.reload(); }, 2000);  
+              setTimeout(function (){ location.reload(); }, 1000);  
             }
             
             function openPdf(id){

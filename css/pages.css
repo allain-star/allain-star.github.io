@@ -111,3 +111,9 @@ main {
 .majorButtons{
   cursor: pointer;
 }
+ul{
+  margin-left: 50px;
+}
+ul li{
+  background-color: white;
+}
