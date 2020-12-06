@@ -21,14 +21,29 @@
   else
   document.getElementById("addingCourseButton").style.display = "block";
   
+  
+  var fileUpdate = document.getElementById("fileDate");
+  localStorage.setItem("fileDate", "");
+  
+  fileUpdate.addEventListener("change", function (){
+    console.log(fileUpdate.value);
+    displayNull();
+    localStorage.setItem("fileDate", fileUpdate.value);
+    loadData();
+  });
+  
   if(allowAccess == "denied"){
      //console.log("Login first!");
   }else{
     
-    function loadData(){
     
-     
-          firebase.database().ref(programId).orderByChild("code").on('value', function (snapshot){
+    function displayNull(){
+        document.getElementById('dataTable').innerHTML = "";
+    }
+  
+    
+    function loadData(){
+          firebase.database().ref(programId+""+localStorage.getItem("fileDate")).orderByChild("code").on('value', function (snapshot){
           snapshot.forEach(element => {
             var content = '';
             var _code = element.val().code;
@@ -68,7 +83,7 @@
               var Title = document.getElementById('courseTitle').value;
               var Description = document.getElementById('courseDescription').value;
               var NumberUnits = document.getElementById('numberUnits').value;    
-    
+              var fileStatus = document.getElementById("fileAge").value;
               //FILE UPLOAD
               var filename = selectedFile.name;
               var storageRef = firebase.storage().ref(filename);
@@ -99,7 +114,7 @@
               }, function() {
                 uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
                   console.log('File available at', downloadURL);
-                  firebase.database().ref(programId+"/"+id).set({
+                  firebase.database().ref(programId+""+fileStatus+"/"+id).set({
                         id: id,
                         code: Code,
                         title: Title,
