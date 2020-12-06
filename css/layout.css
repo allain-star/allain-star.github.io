@@ -135,6 +135,7 @@ a:hover{
 }
 
 .Modal{
+  transition: 2s ease;
   border-radius: 5px;
   display: none;
   position: fixed;
@@ -183,4 +184,10 @@ a:hover{
   nav{
     float: right;
   }
+}
+.goals h3{
+  background-color: white; 
+  width: 100%; 
+  text-align: center;
+  padding: 8px;
 }

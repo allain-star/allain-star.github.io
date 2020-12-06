@@ -10,6 +10,20 @@
     <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-database.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-storage.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-analytics.js"></script>
+    <style>
+      table{
+        width: 100%; 
+        text-align: left; 
+        background-color: white; 
+        border-collapse: collapse;
+        padding: 10px;
+      }
+      table tr th,td{
+        background-color: white;
+        padding: 8px;
+        border-bottom: 1px solid whitesmoke;
+      }
+    </style>
   </head>
   <body>
 
@@ -33,9 +47,9 @@
         <div class="homeContent">
           <div class="goals" id="university">
             
-            <h3 style="background-color: white; width: 100%; text-align: center;">TUP MISSION</h3>
+            <h3>TUP MISSION</h3>
             <p>The Technological University of the Philippines shall provide higher and advanced vocational, technical, industrial, technological and professional education and training in industries and technology and in practical arts leading to applied research, certificates, diplomas and degrees. It shall provide progressive leadership in developmental studies in technical, industrial and technological fields and production using indigenous materials, effect technology transfer in the countryside; and assist in the development of small and medium scale industries in identified growth-centers</p>
-            <h3 style="background-color: white; width: 100%; text-align: center;">TUP VISION</h3>
+            <h3>TUP VISION</h3>
             <p>The Technological University of the Philippines shall be the premier state university with recognized excellence in engineering and technology education at par with the leading universities in the ASEAN Region.</p>
             <header>CORE VALUES</header>
             <p style="line-height: 30px;">
@@ -47,14 +61,13 @@
               <strong>N</strong> - Nationalism through tangible contribution to the rapid economic growth of the country<br>
               <strong>S</strong> - Shared responsibility, hardwork, and resourcefulness in compliance to the mandates of the university<br>
             </p>
-          
+            <h3>CIE GOAL</h3>
+            <p>The College of Industrial Education commits itself to develop highly competent teachers/trainers, leaders, managers, and innovators in Industrial and Technology Education and training as well as in the industry through responsive and relevant programs and proactive human resources in an environment of change</p>
           </div>
 
         </div>
 
       </div>
-    
-      
       <div id="programs" class="content" data-tab-content>
           <div class="wrapper">
             <h3>Programs</h3>
@@ -98,14 +111,35 @@
            
           </div>
       </div>
-      
       <div id="departments" class="content" data-tab-content>
         <div class="wrapper">
           <h3>Departments</h3>
-          <a><div class="items">Dean's Office</div></a>
-          <a><div class="items">Technical Arts Department</div></a>
-          <a><div class="items">Professional industrial Education Department</div></a>
-          <a><div class="items">Home Economics Department</div></a>
+          <table>
+            <tr>
+              <th>Name & Description</th>
+              <th>Office</th>
+            </tr>
+            <tr>
+              <td>Dr. Romeo S. Ebonite<br>Head</td>
+              <td>Dean's Office</td>
+            </tr>
+            <tr>
+              <td>Prof. Cecilio B. Pingkian<br>Head</td>
+              <td>College Secretary</td>
+            </tr>
+            <tr>
+              <td>Dr. Sylvia B. Guevarra<br>Head</td>
+              <td>Student Teaching Department</td>
+            </tr>
+            <tr>
+              <td>Prof. Dorothy Manalansan<br>Head</td>
+              <td>Home Economics Department</td>
+            </tr>
+            <tr>
+              <td>Dr. Cherrypyn B. Barbacena<br>Head</td>
+              <td>Professional Industrial Education Department</td>
+            </tr>
+          </table>
         </div>
       </div>
       
