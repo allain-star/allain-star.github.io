@@ -78,12 +78,12 @@
             submitBtn.addEventListener('click', function(){
               uploadStatus.style.display = "block";
               //COURSE CONTENT
-              var id = Math.floor(Math.random() * 1000);        
+              var id = Math.floor(Math.random() * 5000);        
               var Code = document.getElementById('courseCode').value;
               var Title = document.getElementById('courseTitle').value;
               var Description = document.getElementById('courseDescription').value;
               var NumberUnits = document.getElementById('numberUnits').value;    
-              var fileStatus = document.getElementById("fileAge").value;
+              var fileStatus = document.getElementById("fileDateUploading").value;
               //FILE UPLOAD
               var filename = selectedFile.name;
               var storageRef = firebase.storage().ref(filename);
@@ -106,6 +106,9 @@
                     setTimeout(function (){ 
                         document.getElementById('courseModal').style.display = "none";  
                         upload.style.display = "none";
+                        document.getElementById("uploadingStatus").style.display = "none";
+                        document.getElementById("bg").style.display = "none";
+                        loadData();
                     }, 3000);
                     
                   }
@@ -123,7 +126,7 @@
                         pdf: downloadURL,
                         file: filename
                   });
-                  location.reload();    
+                  displayNull(); 
                 });
               });        
             });
@@ -131,13 +134,13 @@
           
             function deleteData(idd){
               confirm("Are you sure?");
-              firebase.database().ref(programId+"/"+idd).on('value', function (snapshot){
+              firebase.database().ref(programId+""+localStorage.getItem("fileDate")+"/"+idd).on('value', function (snapshot){
                 fileId = snapshot.val().file;
-                firebase.database().ref(programId+"/"+idd).remove();    
+                firebase.database().ref(programId+""+localStorage.getItem("fileDate")+"/"+idd).remove();    
                 firebase.storage().ref().child(snapshot.val().file).delete();
               });  
-                
-              setTimeout(function (){ location.reload(); }, 1000);  
+              displayNull();
+              loadData();    
             }
             
             function openPdf(id){

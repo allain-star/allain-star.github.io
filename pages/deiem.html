@@ -55,8 +55,13 @@
     </div>
     
     <div id="courseModal" class="insertCourseModal">
-      <header style="font-weight: bold;">ADDING COURSE <span><input type="checkbox" id="fileAge" value="old">Old File</span></header>
+      <header style="font-weight: bold;">ADDING COURSE  
+      </header>
       <div style="border: 1px solid whitesmoke; background-color: white; padding: 10px; margin-top: 8px; border-radius: 5px;">
+        <select id="fileDateUploading" style="background-color: white; float: right; border: none; padding: 8px; outline: none;">
+          <option value="">Recent</option>
+          <option value="old">Old</option>
+        </select>
         <br><input type="text" placeholder="Code" id="courseCode" style="width: 20%;" required> 
         <input type="text" placeholder="Course Title" id="courseTitle" style="width: 67%;" required><br> 
         <textarea rows="4" cols="50" style="width: 93%; text-align: left;" id="courseDescription" placeholder="Course Desciption" required></textarea><br>
