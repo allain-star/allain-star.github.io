@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  background-color: #f2f2f2;
+  background-color: white;
   font-family: 'Montserrat', sans-serif;
 }
 header{
@@ -17,6 +17,7 @@ nav{
   padding: 0px;
   width: 100%;
   overflow: hidden; 
+  border-top: 1px solid whitesmoke;
 }
 .sticky {
   position: fixed;
@@ -33,11 +34,9 @@ nav button{
   outline: none;
   cursor: pointer;
   padding: 15px;
-  font-weight: bold;
 }
 nav button:hover{
   color: #c51e3a;
-  border-bottom: 2px solid #c51e3a;
 }
 nav button #userInfo{
   background-color: white;
@@ -50,6 +49,7 @@ nav .login:hover{
 }
 nav .active{
   color: #c51e3a;
+  font-weight: bolder;
   border-bottom: 2px solid #c51e3a;
 }
 header span, img{
@@ -66,20 +66,23 @@ header .banner label{
   font-size: small;
   padding: 0px;
   position: relative;
-  top: -18%;
+  top: -20%;
   padding-left: 62px;
   background: none;
   padding-right: 15px;
   font-weight: bold;
+  
 }
 header .banner .sub-label{
   position: absolute;
   font-size: smaller;
   top: 20px;
-  margin-left: -265px;
+  margin-left: -262px;
+  display: none;
 }
 main .content{
   display: none;  
+  padding: 20px;
 }
 main .active{
   padding: 15px;
@@ -112,6 +115,9 @@ main #college{
   padding: 15px;
   margin: 10px;
 }
+main .homeContent{
+  padding: 30px;
+}
 main .homeContent header{
   font-weight: bolder;
   padding: 0px;
@@ -123,6 +129,7 @@ main .homeContent p{
   padding-bottom: 15px;
   text-align: justify;
   border-bottom: 1px solid whitesmoke;
+  
 }
 main .homeContent p strong{
   background: none;
