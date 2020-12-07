@@ -23,10 +23,12 @@
   
   
   var fileUpdate = document.getElementById("fileDate");
-  localStorage.setItem("fileDate", "");
+  
+  if(localStorage.getItem("log") != null){
+    localStorage.setItem("fileDate", "");
+  }
   
   fileUpdate.addEventListener("change", function (){
-    console.log(fileUpdate.value);
     displayNull();
     localStorage.setItem("fileDate", fileUpdate.value);
     loadData();
