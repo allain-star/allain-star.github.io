@@ -98,9 +98,11 @@
       const submit = document.getElementById("submitBtn");
       const back = document.getElementById("back");
       const message = document.getElementById("message");
+      const fileAge = document.getElementById("fileDate");
       
       if(localStorage.getItem("log") == "none"){
         logButton.style.display = "block"; 
+        fileAge.style.display = "none";
         var i = 0;
         setInterval(function(){
           i++;
@@ -116,7 +118,7 @@
         
         }, 1000);
       }else{ 
-        logButton.style.display = "none";
+            
       }
       
       back.addEventListener('click', function(){
@@ -143,7 +145,7 @@
         var teacherLog = teachInput.value;
         
         var timeStamp = new Date();
-        var time = timeStamp.getDate()+"-"+timeStamp.getMonth()+" Time "+timeStamp.getHours()+":"+timeStamp.getMinutes();
+        var time = timeStamp.getDate()+"-"+timeStamp.getMonth()+1+" Time "+timeStamp.getHours()+":"+timeStamp.getMinutes();
         localStorage.setItem("log", teacherLog);
         firebase.database().ref("log/"+teacherLog).set({
           name: teacherLog,
@@ -151,6 +153,7 @@
         });
         modal.style.display = "none";
         logButton.style.display = "none";
+        fileAge.style.display = "block";
         loadData();
       });
        

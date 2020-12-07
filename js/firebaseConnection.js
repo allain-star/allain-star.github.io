@@ -24,7 +24,7 @@
   
   var fileUpdate = document.getElementById("fileDate");
   
-  if(localStorage.getItem("log") != null){
+  if(localStorage.getItem("log") != "none"){
     localStorage.setItem("fileDate", "");
   }
   
@@ -33,6 +33,8 @@
     localStorage.setItem("fileDate", fileUpdate.value);
     loadData();
   });
+  
+ 
   
   if(allowAccess == "denied"){
      //console.log("Login first!");
