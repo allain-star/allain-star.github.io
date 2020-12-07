@@ -5,11 +5,16 @@
     <link rel="stylesheet" type="text/css" href="../css/layout.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
-    <script type="text/javascript" src="../js/responsiveness.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-database.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-storage.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-analytics.js"></script>
+    
+    
     <style>
       table{
         width: 100%; 
@@ -40,6 +45,7 @@
       <button data-tab-target="#home" class="active" onclick="openNav(this)">HOME</button>
       <button data-tab-target="#programs" onclick="openNav(this)">PROGRAMS</button>
       <button data-tab-target="#departments" onclick="openNav(this)">DEPARTMENTS</button>
+      <button data-tab-target="#logs" onclick="openNav(this)" style="display: none;" id="logButton">LOGS</button>
       <button id="logoutButton" class="login" style="width: 60px; float: right; margin-right: 100px; color: red; padding: 5px; margin: 10px; font-weight: bolder; border-radius: 3px; display: none;">Logout</button>
       <button id="loginButton" class="login" style="width: 60px; float: right; margin-right: 100px; background-color:#c51e3a; color: white; padding: 5px; margin: 10px; font-weight: bolder; border-radius: 3px;">Login</button>
       <span id="userInfo" style="float: right; display: none; background: none; margin: 15px; margin-right: 0px; font-weight: bold; font-size: small;"></span>
@@ -114,6 +120,7 @@
            
           </div>
       </div>
+      
       <div id="departments" class="content" data-tab-content>
         <div class="wrapper">
           <h3>Departments</h3>
@@ -146,6 +153,22 @@
         </div>
       </div>
       
+      <div id="logs" class="content" data-tab-content>
+        <div class="wrapper">
+          <h3>Logs</h3>
+          <table>
+            <tr>
+              <th style="width: 500px;">Name</th>
+              <th style="text-align: center;">Time</th>
+              <th>Date</th>
+            </tr>
+            <tbody id="logData">
+              
+            </tbody>
+          </table>
+        </div>
+      </div>
+      
     </main>
       
       <div class="background" id="background">
@@ -161,6 +184,7 @@
       
     
     <script src="../js/main_functions.js"></script>
+    <script type="text/javascript" src="../js/responsiveness.js"></script>
     
   </body>
 </html>

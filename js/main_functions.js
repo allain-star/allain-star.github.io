@@ -122,6 +122,9 @@ function expandProgramUnder(id){
       }else{ 
         logButton.style.display = "none";
         logoutButton.style.display = "block";      
+        if(localStorage.getItem("log") == "admin")
+          document.getElementById("logButton").style.display = "inline";
+            
       }
       
       logButton.addEventListener('click', function(){
@@ -162,6 +165,7 @@ function expandProgramUnder(id){
             if( userResults > 0){
               localStorage.setItem("log", "admin")
               console.log("admin");
+              document.getElementById("logButton").style.display = "inline";
             }else if( userResults == 0){
               localStorage.setItem("log", teacherLog);
               console.log("VISITOR");
@@ -174,7 +178,7 @@ function expandProgramUnder(id){
         
         var today = new Date();
         var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();;
-        var time = today.getHours();
+        var time = today.getHours()+":"+today.getMinutes();
         
       /*  */
         function submitLog(){
