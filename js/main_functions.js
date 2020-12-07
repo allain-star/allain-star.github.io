@@ -149,7 +149,7 @@ function expandProgramUnder(id){
           measurementId: "G-RGXEL9WZ0P"
         };
         
-        
+        localStorage.setItem("log", "none");
         var teacherLog = teachInput.value;
         var userResults = 0;
         firebase.database().ref('USERS').on('value', function (snapshot){
@@ -163,7 +163,7 @@ function expandProgramUnder(id){
             });
             console.log(userResults);
             if( userResults > 0){
-              localStorage.setItem("log", "admin")
+              localStorage.setItem("log", "admin");
               console.log("admin");
               document.getElementById("logButton").style.display = "inline";
             }else if( userResults == 0){

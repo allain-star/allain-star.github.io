@@ -25,21 +25,28 @@
   var fileUpdate = document.getElementById("fileDate");
   var add = document.getElementById("addingCourseButton");
   var user = localStorage.getItem("log");
-  console.log(user);
- 
-    localStorage.setItem("fileDate", "");
-    loadData();
+  //console.log(user);
+  localStorage.setItem("fileDate", "");
+  
+    if(user == "none"){
+      fileUpdate.style.display = "none";
+    }else{
+      fileUpdate.style.display = "block";
+      loadData();
+    }
+        
+    if(localStorage.getItem("log") == "admin"){
+      add.style.display = "block";
+    }else if(localStorage.getItem("log") != "none"){  
+      add.style.display = "none";     
+    }
+    
+      
     fileUpdate.addEventListener("change", function (){
       displayNull();
       localStorage.setItem("fileDate", fileUpdate.value);
       loadData();
     });
-
-  
-    if(localStorage.getItem("log") == "admin")
-      add.style.display = "block";
-    else
-      add.style.display = "none";
 
     
     function displayNull(){
