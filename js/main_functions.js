@@ -118,12 +118,6 @@ function expandProgramUnder(id){
       if(localStorage.getItem("log") == "none"){
         logButton.style.display = "block";
         var i = 0;
-        setInterval(function(){
-          i++;
-          if(i == 5)
-            message.style.display = "none";
-        
-        }, 1000); 
         
       }else{ 
         logButton.style.display = "none";
@@ -152,18 +146,46 @@ function expandProgramUnder(id){
           measurementId: "G-RGXEL9WZ0P"
         };
         
+        
         var teacherLog = teachInput.value;
-        
-        var timeStamp = new Date();
-        var time = timeStamp.getDate()+"-"+timeStamp.getMonth()+1+" Time "+timeStamp.getHours()+":"+timeStamp.getMinutes();
-        localStorage.setItem("log", teacherLog);
-        firebase.database().ref("log/"+teacherLog).set({
-          name: teacherLog,
-          time: time  
+        var userResults = 0;
+        firebase.database().ref('USERS').on('value', function (snapshot){
+            snapshot.forEach(element => {
+              if(element.val().username == teacherLog){ 
+                userResults++;
+                modal.style.display = "none";
+                logButton.style.display = "none";
+                logoutButton.style.display = "block";
+              }
+            });
+            console.log(userResults);
+            if( userResults > 0){
+              localStorage.setItem("log", "admin")
+              console.log("admin");
+            }else if( userResults == 0){
+              localStorage.setItem("log", teacherLog);
+              console.log("VISITOR");
+              submitLog();
+            
+            }
+            
         });
-        modal.style.display = "none";
-        logButton.style.display = "none";
-        logoutButton.style.display = "block";
         
+        
+        var today = new Date();
+        var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();;
+        var time = today.getHours();
+        
+      /*  */
+        function submitLog(){
+          firebase.database().ref("log/"+teacherLog).set({
+            name: teacherLog,
+            date: date,
+            time: time  
+          });
+          modal.style.display = "none";
+          logButton.style.display = "none";
+          logoutButton.style.display = "block";
+        }
       });
        
