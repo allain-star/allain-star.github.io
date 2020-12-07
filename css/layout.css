@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  background-color: white;
+  background-color:#f2f2f2;
   font-family: 'Montserrat', sans-serif;
 }
 header{
@@ -29,7 +29,7 @@ nav button{
   padding: 3px;
   margin: 0px;
   background: none;
-  width: auto;
+  width: 150px;
   border: none;
   outline: none;
   cursor: pointer;
@@ -116,7 +116,7 @@ main #college{
   margin: 10px;
 }
 main .homeContent{
-  padding: 30px;
+  padding: 20px;
 }
 main .homeContent header{
   font-weight: bolder;
