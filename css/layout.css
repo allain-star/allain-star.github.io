@@ -10,7 +10,7 @@ header{
   width: 100%;
   display: flex;
   padding: 8px;
-  background-color: white;
+  
 }
 nav{
   background-color: white;
@@ -77,8 +77,8 @@ header .banner .sub-label{
   position: absolute;
   font-size: smaller;
   top: 20px;
-  margin-left: -262px;
-  display: ;
+  padding: 0px;
+  margin-left: -260px;
 }
 main .content{
   display: none;  
