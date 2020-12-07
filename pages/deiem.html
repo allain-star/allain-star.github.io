@@ -22,7 +22,6 @@
       </span>
       <label style="padding-left: 60px;">Doctor of Education in Industrial Education Management</label>
       <span style="margin-left: 55%; padding: 10px; cursor: pointer;" id="addingCourseButton"><img src="../css/icons/plus.png" onclick="addCourse()"></span>
-      <button id="loginButton" class="login" style="cursor: pointer; width: 60px; position: relative; left: 49%; margin-right: 100px; background-color:#c51e3a; color: white; padding: 5px; margin: 10px; font-weight: bolder; border-radius: 3px;">Login</button>
     </header>
     <div class="courseIntro">
       <div style="width: 100%; font-family: 'Montserrat', sans-serif; padding: 15px; background-color: white; border-bottom: 1px solid whitesmoke"><strong style="background-color: white;">PROGRAM EDUCATIONAL OBJECTIVES</strong><br> 
@@ -79,85 +78,14 @@
     <script type="text/javascript" src="../js/firebaseConnection.js"></script>
      
       <div id="loginModal" class="Modal">
-        <header style="font-weight: bold; background-color: white;">LOGIN</header>
+        <header style="font-weight: bold; background-color: white;">Access Data Token</header>
         <input type="text" placeholder="Name" id="teacher" style="width: 100%;"><br><br>
         <p style="margin-top: -15px; margin-bottom: 5px; background-color: white; text-align: center; padding: 8px;" id="serverResponse"></p>
         <button id="submitBtn">Login</button>
         <button id="cancelBtn">Cancel</button>
       </div> 
       
-      <div id="message" style="font-weight: bold; position: absolute; background-color: white; padding: 15px; box-shadow: 0 0px 2px rgba(0,0,0,0.19), 0 2px 5px rgba(0,0,0,0.23); border-radius: 5px; top: 92%; font-size: small; left: 50%; transform: translate(-50%);">
-        Login to Access Data
-      </div>
       
-    <script>
-      const logButton = document.getElementById("loginButton");
-      const cancel = document.getElementById("cancelBtn");
-      const modal = document.getElementById("loginModal");
-      const teachInput = document.getElementById("teacher");
-      const submit = document.getElementById("submitBtn");
-      const back = document.getElementById("back");
-      const message = document.getElementById("message");
-      const fileAge = document.getElementById("fileDate");
-      
-      if(localStorage.getItem("log") == "none"){
-        logButton.style.display = "block"; 
-        fileAge.style.display = "none";
-        var i = 0;
-        setInterval(function(){
-          i++;
-          if(i == 5)
-            message.style.display = "none";
-        
-        }, 1000); const message = document.getElementById("message");
-        var i = 0;
-        setInterval(function(){
-          i++;
-          if(i == 5)
-            message.style.display = "none";
-        
-        }, 1000);
-      }else{ 
-            
-      }
-      
-      back.addEventListener('click', function(){
-        localStorage.setItem("log", "none");
-      });
-      logButton.addEventListener('click', function (){
-        modal.style.display = "block";
-      });
-      cancel.addEventListener('click', function (){
-        modal.style.display = "none";
-      });
-        
-      submit.addEventListener('click', function (){
-        var firebaseConfig = {
-          apiKey: "AIzaSyDGD1OvJtu3Z0sWCvGz_MW8I8xbNRjxq84",
-          authDomain: "weconnectmoto.firebaseapp.com",
-          databaseURL: "https://weconnectmoto.firebaseio.com",
-          projectId: "weconnectmoto",
-          storageBucket: "weconnectmoto.appspot.com",
-          messagingSenderId: "785399505200",
-          appId: "1:785399505200:web:af31d23588f6ebeaaae8f5",
-          measurementId: "G-RGXEL9WZ0P"
-        };
-        var teacherLog = teachInput.value;
-        
-        var timeStamp = new Date();
-        var time = timeStamp.getDate()+"-"+timeStamp.getMonth()+1+" Time "+timeStamp.getHours()+":"+timeStamp.getMinutes();
-        localStorage.setItem("log", teacherLog);
-        firebase.database().ref("log/"+teacherLog).set({
-          name: teacherLog,
-          time: time  
-        });
-        modal.style.display = "none";
-        logButton.style.display = "none";
-        fileAge.style.display = "block";
-        loadData();
-      });
-       
-    </script>
   </body>
   
 </html>

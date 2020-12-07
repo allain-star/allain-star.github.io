@@ -23,7 +23,7 @@ function myFunction() {
   }
 }
 
-const loginButton = document.getElementById("loginButton");
+/*const loginButton = document.getElementById("loginButton");
 const modal = document.getElementById("loginModal");
 const cancelButton = document.getElementById("cancelBtn");
 const submit = document.getElementById("submitBtn");
@@ -60,13 +60,14 @@ submit.addEventListener('click', function (){
     });
   });
 });
-
+*/
 const logoutButton = document.getElementById("logoutButton");
+
 logoutButton.addEventListener('click', function(){
-  localStorage.setItem("user", "login");  
+  localStorage.setItem("log", "none");  
   location.reload();
 });
-
+/*
 if(localStorage.getItem("user") == "login"){
   loginButton.style.display = "block";
 }else{
@@ -74,7 +75,7 @@ if(localStorage.getItem("user") == "login"){
   loginButton.style.display = "none";
   userChipt.style.display = "block";
   logoutButton.style.display = "block";
-}
+}*/
 
 var button = ["ButtonGrad", ""];
 function expandPrograms(program, button){
@@ -102,3 +103,67 @@ function expandProgramUnder(id){
   }
   
 }
+
+
+      const logButton = document.getElementById("loginButton");
+      const cancel = document.getElementById("cancelBtn");
+      const modal = document.getElementById("loginModal");
+      const teachInput = document.getElementById("teacher");
+      const submit = document.getElementById("submitBtn");
+      const message = document.getElementById("message");
+      const fileAge = document.getElementById("fileDate");
+      const userChipt = document.getElementById("userInfo");
+      
+      console.log(localStorage.getItem("log"));
+      if(localStorage.getItem("log") == "none"){
+        logButton.style.display = "block";
+        var i = 0;
+        setInterval(function(){
+          i++;
+          if(i == 5)
+            message.style.display = "none";
+        
+        }, 1000); 
+        
+      }else{ 
+        logButton.style.display = "none";
+        logoutButton.style.display = "block";      
+      }
+      
+      logButton.addEventListener('click', function(){
+        localStorage.setItem("log", "none");
+      });
+      logButton.addEventListener('click', function (){
+        modal.style.display = "block";
+      });
+      cancel.addEventListener('click', function (){
+        modal.style.display = "none";
+      });
+        
+      submit.addEventListener('click', function (){
+        var firebaseConfig = {
+          apiKey: "AIzaSyDGD1OvJtu3Z0sWCvGz_MW8I8xbNRjxq84",
+          authDomain: "weconnectmoto.firebaseapp.com",
+          databaseURL: "https://weconnectmoto.firebaseio.com",
+          projectId: "weconnectmoto",
+          storageBucket: "weconnectmoto.appspot.com",
+          messagingSenderId: "785399505200",
+          appId: "1:785399505200:web:af31d23588f6ebeaaae8f5",
+          measurementId: "G-RGXEL9WZ0P"
+        };
+        
+        var teacherLog = teachInput.value;
+        
+        var timeStamp = new Date();
+        var time = timeStamp.getDate()+"-"+timeStamp.getMonth()+1+" Time "+timeStamp.getHours()+":"+timeStamp.getMinutes();
+        localStorage.setItem("log", teacherLog);
+        firebase.database().ref("log/"+teacherLog).set({
+          name: teacherLog,
+          time: time  
+        });
+        modal.style.display = "none";
+        logButton.style.display = "none";
+        logoutButton.style.display = "block";
+        
+      });
+       

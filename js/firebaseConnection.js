@@ -12,9 +12,9 @@
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
   
-  var allowAccess = " ";
+  var allowAccess = "dasda";
   var programId = document.getElementById('programId').value;
-  validateUser(localStorage.getItem("user"));
+  //validateUser(localStorage.getItem("user"));
   
   if( localStorage.getItem("user") == "login")
     document.getElementById("addingCourseButton").style.display = "none";
@@ -26,20 +26,20 @@
   
   if(localStorage.getItem("log") != "none"){
     localStorage.setItem("fileDate", "");
+    loadData();
+    fileUpdate.addEventListener("change", function (){
+      displayNull();
+      localStorage.setItem("fileDate", fileUpdate.value);
+      loadData();
+    });
+    
   }
   
-  fileUpdate.addEventListener("change", function (){
-    displayNull();
-    localStorage.setItem("fileDate", fileUpdate.value);
-    loadData();
-  });
+  
   
  
   
-  if(allowAccess == "denied"){
-     //console.log("Login first!");
-  }else{
-    
+
     
     function displayNull(){
         document.getElementById('dataTable').innerHTML = "";
@@ -57,7 +57,7 @@
             var refCode = element.val().id;
             var pdf = element.val().pdf;
             
-            if(localStorage.getItem("user") != "login")
+            if(localStorage.getItem("log") != "none")
               content += "<tr style='font-weight: bold; border-bottom: 1px solid whitesmoke;'><td>"+_code+"</td><td>"+_title+"</td><td style='word-wrap: break-word; min-width: 800px;'>"+_description+"</td><td style='text-align: center;'>"+_unit+"</td><td style='text-align: right;'><button style='background: none; border: none; outline: none; margin-right: -37px;' onclick='openPdf("+refCode+")' ><img src='../css/icons/pdf.png' style='height: 22px; margin: 0px; cursor: pointer; border-right: 1px solid gray; padding-right: 4px;'></button><button style='outine: none; border: none; cursor: pointer;background: none; font-family: 'Source Sans Pro', sans-serif;' onclick='deleteData("+refCode+")'><img src='../css/icons/delete.png' height='22px padding: 0px; outline: none; margin-left: 0px;'></button></td></tr>";
             else
             content += "<tr style='font-weight: bold; border-bottom: 1px solid whitesmoke;'><td>"+_code+"</td><td>"+_title+"</td><td style='word-wrap: break-word; min-width: 800px;'>"+_description+"</td><td style='text-align: center;'>"+_unit+"</td><td style='text-align: right;'><button style='float:right; background: none; border: none; outline: none; margin-right: 0px;' onclick='openPdf("+refCode+")' ><img src='../css/icons/pdf.png' style='height: 22px; margin: 0px; cursor: pointer; padding-right: 4px;'></button><button style='outine: none; border: none; cursor: pointer;background: none; font-family: 'Source Sans Pro', sans-serif;' onclick='deleteData("+refCode+")'></td></tr>";
@@ -153,7 +153,7 @@
               }); 
             } 
   
-  } 
+  
   function logout(){
     location.replace("../index.html");
   }
