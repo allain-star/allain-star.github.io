@@ -97,6 +97,7 @@
               var NumberUnits = document.getElementById('numberUnits').value;    
               var fileStatus = document.getElementById("fileDateUploading").value;
               //FILE UPLOAD
+            
               var filename = selectedFile.name;
               var storageRef = firebase.storage().ref(filename);
               var uploadTask = storageRef.put(selectedFile);
